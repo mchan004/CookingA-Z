@@ -16,7 +16,6 @@ class CreateDSNguyenlieuTable extends Migration
       Schema::create('DSNguyenlieu', function (Blueprint $table) {
           $table->increments('id');
           $table->string('tenNguyenlieu');
-          $table->timestamps();
       });
     }
 

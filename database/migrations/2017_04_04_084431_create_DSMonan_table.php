@@ -24,7 +24,7 @@ class CreateDSMonanTable extends Migration
           $table->string('dokho');
           $table->string('video');
           $table->string('huongdan');
-          $table->integer('createby');
+          $table->integer('createby')->unsigned();
           $table->timestamps();
 
 

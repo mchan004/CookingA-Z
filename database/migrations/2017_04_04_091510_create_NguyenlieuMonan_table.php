@@ -15,10 +15,10 @@ class CreateNguyenlieuMonanTable extends Migration
     {
       Schema::create('NguyenlieuMonan', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('idMonan');
+          $table->integer('idMonan')->unsigned();
           $table->float('soluong');
           $table->string('donvi');
-          $table->string('idNguyenlieu');
+          $table->integer('idNguyenlieu')->unsigned();
 
           $table->foreign('idNguyenlieu')->references('id')->on('DSNguyenlieu');
           $table->foreign('idMonan')->references('id')->on('DSMonan');

@@ -15,8 +15,8 @@ class CreateDungcuMonanTable extends Migration
     {
       Schema::create('DungcuMonan', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('idMonan');;
-          $table->integer('idDungcu');
+          $table->integer('idMonan')->unsigned();
+          $table->integer('idDungcu')->unsigned();
 
           $table->foreign('idDungcu')->references('id')->on('DSDungcu');
           $table->foreign('idMonan')->references('id')->on('DSMonan');
