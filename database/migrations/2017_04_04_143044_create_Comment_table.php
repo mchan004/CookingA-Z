@@ -20,6 +20,7 @@ class CreateCommentTable extends Migration
           $table->boolean('isSuccess');
           $table->string('comment');
           $table->integer('rate');
+          $table->integer('like');
           $table->integer('idMonan')->unsigned();
 
           $table->timestamps();
