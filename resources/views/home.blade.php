@@ -1,5 +1,15 @@
-@extends('index')
+@extends('layouts.topAndfooter')
+
+@section('title', 'Page Title')
+
+
 @section('content')
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center">Từ điển món ăn<br>Cooking A-Z</h1>
+  </div>
+  <hr>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -12,18 +22,19 @@
       </ol>
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-				<div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
         <div class="item active"> <img src="{{ URL::asset('images/hinh1.jpg') }}" alt="Chania"> </div>
         <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Chania"> </div>
         <div class="item"> <img src="{{ URL::asset('images/hinh3.jpg') }}" alt="Flower"> </div>
-        <div class="item"> <img src="{{ URL::asset('images/hinh1.jpg') }}" alt="Flower"> </div>
+        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Flower"> </div>
       </div>
+
       <!-- Left and right controls -->
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
   </div>
   <hr>
 </div>
+
 
 <div class="container-fluid">
   <div class="row text-center">
@@ -53,17 +64,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-10">
-      <h3><strong>Món chính</strong></h3>
+      <h3><strong>Newest cooking</strong></h3>
       <div class="row cooking-item">
         <!--item-->
         <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <a href="http://localhost:8000/inside"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4><a href="http://localhost:8000/inside">Gà hồng kong nướng muối ớt đut lò</a></h4>
-            <small><em><a href="http://localhost:8000/inside">Gà, Lò vipa, nướng</a></em> <br>
-            <img  src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}"  width="20">  Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
           <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
           <div class="row" style="margin-left: -7px">
             <h4>Gà hồng kong nướng muối ớt đut lò</h4>
@@ -75,14 +79,21 @@
           <div class="row" style="margin-left: -7px">
             <h4>Gà hồng kong nướng muối ớt đut lò</h4>
             <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
+            <img src="flags/us.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
         </div>
         <div class="col-sm-4 col-xs-6">
           <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
           <div class="row" style="margin-left: -7px">
             <h4>Gà hồng kong nướng muối ớt đut lò</h4>
             <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
+            <img src="flags/hk.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
+          <div class="row" style="margin-left: -7px">
+            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
+            <small><em>Gà, Lò vipa, nướng</em> <br>
+            <img src="flags/cn.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
         </div>
         <div class="col-sm-4 col-xs-6">
           <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
@@ -208,6 +219,7 @@
         <button type="button" class="btn btn-warning btn-lg">XEM THÊM</button>
       </div>
       <hr>
+
       <div class="">
         <div class="media col-sm-10 col-sm-offset-1 col-lg-offset-2 col-lg-8">
           <div class="media-left hidden-xs">
@@ -220,9 +232,12 @@
               <small>Master essential dishes, ingredients and cooking techniques on our new Learn to Cook page, which collects our best instructional guides, recipes and videos in one place for novices and confident home cooks alike.</small>
               <small><em>Bí kíp làm bếp</em></small>
             </blockquote>
+
           </div>
         </div>
       </div>
+
+
     </div>
     <div class="col-sm-2">
       <div class="row">
@@ -234,12 +249,9 @@
                     <input type="email" class="form-control" placeholder="Email">
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
                   </div>
                   <button type="submit" class="btn btn-default">Đăng nhập</button>
-									<p class="text-center">Bạn có tài khoản không? <strong><a href="http://localhost:8000/dangky"
-											class="blue-text">Đăng ký ngay!</a></strong>
-     							</p>
                 </form>
             </div>
         </div>
@@ -271,9 +283,13 @@
             </tbody>
         </table>
       </div>
+
+
       <div class="row banner hidden-xs">
       	<img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
+
       </div>
+
     </div>
   </div>
 </div>

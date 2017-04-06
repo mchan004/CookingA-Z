@@ -12,39 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-
-Route::get('/thucan',function(){
-
-			return View::make('home');
+Route::get('/inside', function () {
+    return view('inside');
 });
 
-Route::get('/inside',function(){
-
-			return View::make('inside');
-});
-
-Route::get('/outside',function(){
-
-			return View::make('outside');
-});
-
-Route::get('/dangky',function(){
-
-			return View('dangky');
-});
-
-Route::get('/montrangmieng',function(){
-
-			return View::make('monsub');
-});
-Route::get('/dangnhap',function(){
-
-			return View('dangnhap');
-});
-Route::get('/banhtrangmieng',function(){
-
-			return View::make('banhuc');
+Route::get('/outside', function () {
+    return view('outside');
 });

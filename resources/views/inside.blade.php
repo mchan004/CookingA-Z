@@ -1,4 +1,8 @@
-@extends('index')
+@extends('layouts.topAndfooter')
+
+@section('title', 'Page Title')
+
+
 @section('content')
 <div class="container-fluid">
   <div class="row">
@@ -12,18 +16,20 @@
       </ol>
 
       <!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
-	        <div class="item active"> <img src="{{ URL::asset('images/hinh1.jpg') }}" alt="Chania"> </div>
-	        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Chania"> </div>
-	        <div class="item"> <img src="{{ URL::asset('images/hinh3.jpg') }}" alt="Flower"> </div>
-	        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Flower"> </div>
-	      </div>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active"> <img src="{{ URL::asset('images/hinh1.jpg') }}" alt="Chania"> </div>
+        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Chania"> </div>
+        <div class="item"> <img src="{{ URL::asset('images/hinh3.jpg') }}" alt="Flower"> </div>
+        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Flower"> </div>
+      </div>
 
       <!-- Left and right controls -->
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
   </div>
 </div>
+
 <hr>
+
 <div class="container-fluid">
 	<div class="col-sm-10">
     	<div class="row">
@@ -40,8 +46,10 @@
             <div class="col-sm-5">
                     SHARE
                         <ul class="share-buttons">
-                          <li><a href="" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="{{ URL::asset('images/Facebook.png') }}"></a></li>
-                          <li><a href="" target="_blank" title="Send email"><img alt="Send email" src="{{ URL::asset('images/Email.png') }}"></a></li>
+                          <li><a href="" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="images/Facebook.png"></a></li>
+                          <li><a href="" target="_blank" title="Tweet"><img alt="Tweet" src="images/Twitter.png"></a></li>
+                          <li><a href="" target="_blank" title="Pin it"><img alt="Pin it" src="images/Pinterest.png"></a></li>
+                          <li><a href="" target="_blank" title="Send email"><img alt="Send email" src="images/Email.png"></a></li>
                         </ul>
 
                     <div class="panel panel-default">
@@ -68,16 +76,16 @@
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td>Tú BUFFET</td>
+                        <td>Doe</td>
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>Tú Đội</td>
+                        <td>Moe</td>
 
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>Tú buffetKhoai</td>
+                        <td>Dooley</td>
 
                       </tr>
                     </tbody>
@@ -92,16 +100,16 @@
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td>Team MinhBeo</td>
+                        <td>Doe</td>
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>Fan Sky's Chân Chính</td>
+                        <td>Moe</td>
 
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>Sơn tùng</td>
+                        <td>Dooley</td>
 
                       </tr>
                     </tbody>
@@ -143,13 +151,13 @@
                   <li class="media">
                     <div class="media-left">
                       <a href="#">
-                        <img class="media-object" src="http://s1.haivn.com/data/600_eaa59e91-c5a3-4cc4-be27-b18a049f06f9.jpg" height="40" width="40" alt="...">
+                        <img class="media-object" src="http://cooking.nytimes.com/static/images/user-img-eggplant.png" height="40" width="40" alt="...">
                       </a>
                     </div>
                     <div class="media-body">
                       <div>
-                          <h4 class="media-heading">Quang Minh <small>| <i><u>Chưa nấu bao giờ =)) </u> khoảng 32 phút trước</i></small></h4>
-                          <strong>Cảm ơn bạn đã chỉ mình cái web này =)) </strong>
+                          <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 1 năm trước</i></small></h4>
+                          I haven't tried this specific recipe, but bagel dough is a very tough dough and sometimes my motor does overheat on the stand mixer. Usually have to reduce the recipe or get a bigger mixer. :)
                       </div>
                       <div style="padding-left:15px">
                         <a href="#"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Reply</a>
@@ -166,7 +174,7 @@
                             </div>
                             <div class="media-body">
                               <div>
-                                  <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 35 phút trước</i></small></h4>
+                                  <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 1 năm trước</i></small></h4>
                                   I haven't tried this specific recipe, but bagel dough is a very tough dough and sometimes my motor does overheat on the stand mixer. Usually have to reduce the recipe or get a bigger mixer. :)
                               </div>
                               <div style="padding-left:15px">
@@ -184,7 +192,7 @@
                             </div>
                             <div class="media-body">
                               <div>
-                                  <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 39 phút trước</i></small></h4>
+                                  <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 1 năm trước</i></small></h4>
                                   I haven't tried this specific recipe, but bagel dough is a very tough dough and sometimes my motor does overheat on the stand mixer. Usually have to reduce the recipe or get a bigger mixer. :)
                               </div>
                               <div style="padding-left:15px">
@@ -202,7 +210,7 @@
                             </div>
                             <div class="media-body">
                               <div>
-                                  <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 40 phút trước</i></small></h4>
+                                  <h4 class="media-heading">Thạnh Tú <small>| <i><u>Đã nấu thành công</u> khoảng 1 năm trước</i></small></h4>
                                   I haven't tried this specific recipe, but bagel dough is a very tough dough and sometimes my motor does overheat on the stand mixer. Usually have to reduce the recipe or get a bigger mixer. :)
                               </div>
                               <div style="padding-left:15px">
@@ -267,4 +275,19 @@
 
 </div>
 <hr>
+@endsection
+
+
+@section('addscript')
+<script src="src/jquery.star-rating-svg.js"></script>
+<script>
+$(function() {
+	$(".my-rating").starRating({
+	  initialRating: 4,
+	  strokeColor: '#894A00',
+	  strokeWidth: 10,
+	  starSize: 20
+	});
+});
+</script>
 @endsection
