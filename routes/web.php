@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/inside', function () {
+    return view('inside');
+});
+
+Route::get('/outside', function () {
+    return view('outside');
 });
