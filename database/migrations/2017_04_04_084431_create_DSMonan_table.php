@@ -20,7 +20,6 @@ class CreateDSMonanTable extends Migration
           $table->string('nhaTaitro');
           $table->string('gioithieu');
           $table->string('hinhMinhhoa');
-          $table->integer('nguyenlieu');
           $table->string('origin');
           $table->string('thoigian');
           $table->string('dokho');
