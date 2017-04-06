@@ -16,15 +16,16 @@ class CreateDSMonanTable extends Migration
       Schema::create('DSMonan', function (Blueprint $table) {
           $table->increments('id');
           $table->string('tenMonan')->unique();
-          $table->integer('level')->nullable();
+          $table->integer('level')->default(1);
           $table->string('nhaTaitro')->nullable();
-          $table->string('gioithieu');
+          $table->string('gioithieu', 1000);
           $table->string('hinhMinhhoa');
           $table->string('origin')->nullable();
-          $table->string('thoigian')->nullable();
-          $table->string('dokho')->nullable();
+          $table->integer('thoigian')->nullable();
+          $table->integer('dokho')->nullable();
           $table->string('video')->nullable();
-          $table->string('huongdan');
+          $table->string('huongdan', 10000);
+          $table->string('nguon')->nullable();
           $table->string('hits')->default(0);
           $table->boolean('publish')->default(0);
           $table->integer('createby')->unsigned();

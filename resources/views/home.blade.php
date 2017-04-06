@@ -67,48 +67,18 @@
       <h3><strong>Newest cooking</strong></h3>
       <div class="row cooking-item">
         <!--item-->
+
+@foreach ($newest as $v)
         <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
+          <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 30%;" width="100%" class="img-responsive"> </div>
           <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
+            <h4>{{$v->tenMonan}}</h4>
             <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
+            <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
+            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
         </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="flags/us.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="flags/hk.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="flags/cn.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đút lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            Khó: 150p</small> </div>
-        </div>
+@endforeach
+
       </div>
 
       <h3>Món tráng miệng, bánh</h3>
