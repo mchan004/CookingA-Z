@@ -15,7 +15,10 @@ class CreateDSNguyenlieuTable extends Migration
     {
       Schema::create('DSNguyenlieu', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('tenNguyenlieu');
+          $table->string('tenNguyenlieu')->unique();
+          $table->string('group')->nullable();
+          $table->boolean('publish')->default(0);
+          $table->string('english')->nullable();
       });
     }
 
