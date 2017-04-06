@@ -15,7 +15,8 @@ class CreateDSDungcuTable extends Migration
     {
       Schema::create('DSDungcu', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('tenDungcu');
+          $table->string('tenDungcu')->unique();
+          $table->boolean('publish')->default(0);
       });
     }
 
