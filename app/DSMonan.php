@@ -10,14 +10,14 @@ class DSMonan extends Model
 
 
 
-  public function DSNguyenlieu()
+  public function NguyenlieuMonan()
   {
-      return $this->hasMany('App\NguyenlieuMonan', 'idNguyenlieu', 'id');
+      return $this->hasManyThrough('App\DSNguyenlieu', 'App\NguyenlieuMonan', 'idMonan', 'id', 'id')->orderBy('priority', 'asc');
   }
 
-  public function DSDungcu()
+  public function DungcuMonan()
   {
-      return $this->hasMany('App\DungcuMonan', 'idDungcu', 'id');
+      return $this->hasMany('App\DungcuMonan', 'idMonan', 'id');
   }
 
   public function comments()

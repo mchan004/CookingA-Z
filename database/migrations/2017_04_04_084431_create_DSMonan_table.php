@@ -16,6 +16,7 @@ class CreateDSMonanTable extends Migration
       Schema::create('DSMonan', function (Blueprint $table) {
           $table->increments('id');
           $table->string('tenMonan')->unique();
+          $table->integer('categorie')->unsigned();
           $table->integer('level')->default(1);
           $table->string('nhaTaitro')->nullable();
           $table->string('gioithieu', 1000);
@@ -31,7 +32,7 @@ class CreateDSMonanTable extends Migration
           $table->integer('createby')->unsigned();
           $table->timestamps();
 
-
+          $table->foreign('categorie')->references('id')->on('Categories');
           $table->foreign('createby')->references('id')->on('users');
       });
     }
