@@ -29,5 +29,10 @@ class HomeController extends Controller
       return view('home', ['newest' => $newest, 'thucuong' => $thucuong, 'trangmieng' => $trangmieng, 'title' => 'Từ điển món ăn CookingA-Z']);
     }
 
+    public function inside($id)
+    {
+      return view();
+    }
+
 
 }
