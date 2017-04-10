@@ -22,5 +22,10 @@ class HomeController extends Controller
         return view('home', ['newest' => $newest]);
     }
 
+    public function inside($id)
+    {
+      return view();
+    }
+
 
 }
