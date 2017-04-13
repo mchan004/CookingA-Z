@@ -15,21 +15,24 @@ class CreateDSMonanTable extends Migration
     {
       Schema::create('DSMonan', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('tenMonan');
-          $table->integer('level');
-          $table->string('nhaTaitro');
-          $table->string('gioithieu');
+          $table->string('tenMonan')->unique();
+          $table->integer('categorie')->unsigned();
+          $table->integer('level')->default(1);
+          $table->string('nhaTaitro')->nullable();
+          $table->string('gioithieu', 1000);
           $table->string('hinhMinhhoa');
-          $table->integer('nguyenlieu');
-          $table->string('origin');
-          $table->string('thoigian');
-          $table->string('dokho');
-          $table->string('video');
-          $table->string('huongdan');
+          $table->string('origin')->nullable();
+          $table->integer('thoigian')->nullable();
+          $table->integer('dokho')->nullable();
+          $table->string('video')->nullable();
+          $table->string('huongdan', 10000);
+          $table->string('nguon')->nullable();
+          $table->string('hits')->default(0);
+          $table->boolean('publish')->default(0);
           $table->integer('createby')->unsigned();
           $table->timestamps();
 
-
+          $table->foreign('categorie')->references('id')->on('Categories');
           $table->foreign('createby')->references('id')->on('users');
       });
     }

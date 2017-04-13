@@ -1,9 +1,10 @@
 @extends('layouts.topAndfooter')
 
-@section('title', 'Page Title')
+@section('title', $title)
 
 
 @section('content')
+
 <div class="container-fluid">
   <div class="row">
     <h1 class="text-center">Từ điển món ăn<br>Cooking A-Z</h1>
@@ -45,17 +46,17 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-sm-offset-1 text-center"> <img src="https://cdn.shopify.com/s/files/1/0658/0121/files/calendar-icon2.svg?7708455607991419225" alt="What You Want">
-      <h4>What You Want,<br>
-        When You Want It</h4>
+      <h3>What You Want,<br>
+        When You Want It</h3>
       <p class="hidden-xs">Choose from hundreds of recipes and reorder your favorite meal at any time.</p>
     </div>
     <div class="text-center col-sm-3"> <img src="https://cdn.shopify.com/s/files/1/0658/0121/files/partners-icon2.svg?7708455607991419225" alt="What You Want">
-      <h4>Famous Chefs,<br>
-        Trusted Partners</h4>
+      <h3>Famous Chefs,<br>
+        Trusted Partners</h3>
       <p class="hidden-xs">Our celebrity chefs and trusted culinary teams make you look like a pro.</p>
     </div>
     <div class="text-center col-sm-3"> <img src="https://cdn.shopify.com/s/files/1/0658/0121/files/spatula-icon2.svg?7708455607991419225s" alt="What You Want">
-      <h4>No Subscriptions</h4>
+      <h3>No Subscriptions</h3>
       <p class="hidden-xs">You hate subscriptions, we hate subscriptions. You won't find them in our kitchen.</p>
     </div>
   </div>
@@ -64,156 +65,63 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-10">
-      <h3><strong>Newest cooking</strong></h3>
+      <h2><strong>Newest cooking</strong></h2>
       <div class="row cooking-item">
         <!--item-->
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
+
+@foreach ($newest as $v)
+        <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
+          <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
           <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
+            <h3>{{$v->tenMonan}}</h3>
+            <small><em>
+            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+              {{$v1->tenNguyenlieu}},
+            @endforeach
+             ...</em><br>
+            <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
+            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: {{$v->thoigian}}p</small> </div>
         </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="flags/us.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="flags/hk.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            <img src="flags/cn.svg" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đut lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            Khó: 150p</small> </div>
-        </div>
-        <div class="col-sm-4 col-xs-6">
-          <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-          <div class="row" style="margin-left: -7px">
-            <h4>Gà hồng kong nướng muối ớt đút lò</h4>
-            <small><em>Gà, Lò vipa, nướng</em> <br>
-            Khó: 150p</small> </div>
-        </div>
+@endforeach
+
       </div>
 
-      <h3>Món tráng miệng, bánh</h3>
+      <h2>Món tráng miệng, bánh</h2>
       <div class="row cooking-item">
         <!--item-->
+@foreach ($trangmieng as $v)
         <div class="col-sm-3">
           <div class="row" style="margin-bottom:3px;">
             <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
+              <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
             </div>
             <div class="col-sm-12 col-xs-6">
               <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">Bò úc lăn bột chiên nước mắm tỏi ớt</a></h4>
-                <small><img src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
-                <small><img src="{{ URL::asset('images/flags/vn.svg') }}" height="20"> <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: 150p</small> </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
+                <h3><a href="#">{{$v->tenMonan}}</a></h3>
                 <small>Dễ: 15p</small> </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
-                <small>Dễ: 15p</small> </div>
-            </div>
-          </div>
-        </div>
+@endforeach
+
       </div>
-      <h3>Thức uống, cooktai</h3>
+      <h2>Thức uống, cooktai</h2>
       <div class="row cooking-item">
         <!--item-->
+@foreach ($thucuong as $v)
         <div class="col-sm-3">
           <div class="row" style="margin-bottom:3px;">
             <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
+              <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
             </div>
             <div class="col-sm-12 col-xs-6">
               <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
+                <h3><a href="#">{{$v->tenMonan}}</a></h3>
                 <small>Dễ: 15p</small> </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
-                <small>Dễ: 15p</small> </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
-                <small>Dễ: 15p</small> </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{ URL::asset('images/hinhnho1.jpg') }}" alt="..." class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h4><a href="#">40 Cloves garlic chicken</a></h4>
-                <small>Dễ: 15p</small> </div>
-            </div>
-          </div>
-        </div>
+@endforeach
       </div>
       <div class="text-center" style="margin-top:10px">
         <button type="button" class="btn btn-warning btn-lg">XEM THÊM</button>
@@ -243,7 +151,7 @@
       <div class="row">
         <div class="well" style="padding-top:0px; margin-left:5px">
         	<div class="row">
-            	<h4 style="margin-left:10px">Tài khoản</h4>
+            	<h3 style="margin-left:10px">Tài khoản</h3>
                 <form>
                   <div class="form-group">
                     <input type="email" class="form-control" placeholder="Email">
@@ -257,7 +165,7 @@
         </div>
       </div>
       <div class="row" style="padding-left:5px">
-      <h4>Những món được đánh giá cao</h4>
+      <h3>Những món được đánh giá cao</h3>
       	<table class="table table-hover table-responsive">
             <tbody>
               <tr>

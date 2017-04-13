@@ -16,8 +16,8 @@ class CreateNguyenlieuMonanTable extends Migration
       Schema::create('NguyenlieuMonan', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('idMonan')->unsigned();
-          $table->float('soluong');
-          $table->string('donvi');
+          $table->float('soluong')->nullable();
+          $table->string('donvi')->nullable();
           $table->integer('idNguyenlieu')->unsigned();
 
           $table->foreign('idNguyenlieu')->references('id')->on('DSNguyenlieu');
