@@ -16,6 +16,8 @@ class CreateDSMonanTable extends Migration
       Schema::create('DSMonan', function (Blueprint $table) {
           $table->increments('id');
           $table->string('tenMonan');
+          $table->integer('level');
+          $table->string('nhaTaitro');
           $table->string('gioithieu');
           $table->string('hinhMinhhoa');
           $table->integer('nguyenlieu');

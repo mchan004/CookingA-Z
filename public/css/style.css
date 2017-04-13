@@ -1,0 +1,122 @@
+body {
+	padding-top: 50px;
+	color: #555759;
+}
+
+p {
+	font-family: 'Verlag-Book', 'Verlag-Book-IE';
+}
+
+/*share */
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+ul.share-buttons .sr-only {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/*comment*/
+#cm a {
+	font-family: Open Sans;
+	text-decoration: none;
+	font-size: 13px;
+	color: #a2a2a2;
+}
+
+/*button*/
+.btn-std {
+	border: none;
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #777;
+    background-color: transparent;
+	border-radius: 3px;
+
+}
+.send-btn {
+	margin-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+    border-left: 1px solid #bebebe;
+	color: #e33d26;
+}
+
+
+/* carousel */
+.thumbnail-image {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel img {
+    min-width: 100%;
+	max-height: 500px;
+}
+
+/* items */
+
+.cooking-item a {
+	color: #555759;
+	font-family: 'Verlag-Book', 'Verlag-Book-IE';
+}
+
+.cooking-item h4 {
+	margin-bottom: 0px;
+}
+
+.cooking-item small {
+	 color:#777;
+}
+.banner img {
+	min-width:100%;
+}
+
+/*footer*/
+.footer {
+	padding-top:5px;
+	background: #e6e7e3;
+}
+.share-links {
+    float: none;
+    margin-bottom: 5px;
+}
+.share-links a {
+    margin-right: 10px;
+	min-height: 49px;
+    width: 49px;
+    display: inline-block;
+    background: transparent url("../social-sprite.png") no-repeat 13px 100px;
+}
+.share-links a.fb {
+    background-position: 0px -400px;
+}
+.share-links a.fb:hover {
+    background-position: 0px -500px;
+}
+.share-links a.twitter {
+    background-position: 0px 0px;
+}
+.share-links a.twitter:hover {
+    background-position: 0px -100px;
+}
+.share-links a.pinterest {
+    background-position: 0px -200px;
+}
+.share-links a.pinterest:hover {
+        background-position: 0px -300px;
+}
