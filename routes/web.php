@@ -22,21 +22,21 @@ Route::get('/outside', function () {
 });
 
 /////////
-//Admin//
+//Login//
 /////////
 
-Route::get('/Administrator', function () {
-    return view('AdminPages.home');
+Route::get('/Homelogin', function () {
+    return view('Login.home');
 });
 
 Route::get('/Login', function () {
-    return view('AdminPages.login');
+    return view('Login.login');
 });
 
 Route::get('/QuanLyBaiViet', function () {
-    return view('AdminPages.tables');
+    return view('Login.tables');
 });
 
 Route::get('/GuiBaiMoi', function () {
-    return view('AdminPages.form_wizards');
+    return view('Login.form_wizards');
 });
