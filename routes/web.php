@@ -20,3 +20,23 @@ Route::get('/inside', function () {
 Route::get('/outside', function () {
     return view('outside');
 });
+
+/////////
+//Admin//
+/////////
+
+Route::get('/Administrator', function () {
+    return view('AdminPages.home');
+});
+
+Route::get('/Login', function () {
+    return view('AdminPages.login');
+});
+
+Route::get('/QuanLyBaiViet', function () {
+    return view('AdminPages.tables');
+});
+
+Route::get('/GuiBaiMoi', function () {
+    return view('AdminPages.form_wizards');
+});
