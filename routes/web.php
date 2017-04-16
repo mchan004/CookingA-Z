@@ -13,8 +13,28 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/{id}/{title}', 'HomeController@inside')->where(['id' => '[0-9]+');
+Route::get('/{id}/{title}', 'HomeController@inside')->where(['id' => '[0-9]+']);
 
 Route::get('/outside', function () {
     return view('outside');
+});
+
+/////////
+//Login//
+/////////
+
+Route::get('/Homelogin', function () {
+    return view('Login.home');
+});
+
+Route::get('/Login', function () {
+    return view('Login.login');
+});
+
+Route::get('/QuanLyBaiViet', function () {
+    return view('Login.tables');
+});
+
+Route::get('/GuiBaiMoi', function () {
+    return view('Login.form_wizards');
 });
