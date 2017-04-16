@@ -71,7 +71,10 @@
 
 @foreach ($newest as $v)
         <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
-          <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
+          <div class="row" style="margin-right: -12px">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}"
+              style="height: 250px;" width="100%" class="img-responsive">
+          </div>
           <div class="row" style="margin-left: -7px">
             <h3>{{$v->tenMonan}}</h3>
             <small><em>
