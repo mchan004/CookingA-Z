@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DSMonan;
+use App\NguyenlieuMonan;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,23 @@ class HomeController extends Controller
 
     public function inside($id)
     {
-      return view();
+      $monan = DSMonan::find($id);
+      $nguyenlieu = NguyenlieuMonan::where('idMonan', $id)->get();
+      return view('inside', ['monan' => $monan, 'nguyenlieu' => $nguyenlieu]);
+    }
+
+    public function outside()
+    {
+
+      $newest = DSMonan::orderBy('created_at', 'desc')
+                        ->take(12)
+                        ->get();
+
+      return view('outside', ['newest' => $newest]);
+
+
+
+
     }
 
 

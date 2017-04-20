@@ -9,4 +9,9 @@ class NguyenlieuMonan extends Model
     protected $table = 'NguyenlieuMonan';
 
     public $timestamps = false;
+
+    public function ten()
+    {
+        return $this->hasOne('App\DSNguyenlieu', 'id', 'idNguyenlieu');
+    }
 }

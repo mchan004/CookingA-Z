@@ -13,11 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/{id}/{title}', 'HomeController@inside')->where(['id' => '[0-9]+']);
+Route::get('/{id}/{title}', 'HomeController@inside')->where('id', '[0-9]+');
 
-Route::get('/outside', function () {
-    return view('outside');
-});
+Route::get('/outside', 'HomeController@outside');
 
 /////////
 //Login//

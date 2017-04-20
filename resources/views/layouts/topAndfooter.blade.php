@@ -9,6 +9,7 @@
 <!-- Bootstrap -->
 <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/star-rating-svg.css') }}">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
