@@ -82,9 +82,12 @@
             @foreach ($v->NguyenlieuMonan->take(4) as $v1)
               {{$v1->tenNguyenlieu}},
             @endforeach
-             ...</em><br>
+            ...</em><br>
             <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
+            @if ($v->video != null)
+            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">
+            @endif
+            @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
         </div>
       </a>
 @endforeach
