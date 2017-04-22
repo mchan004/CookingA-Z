@@ -12,171 +12,138 @@
     <hr>
 </div>
 <div class="container-fluid">
-    <style>
-        .zoom:hover {
-            background-color: #eaecef;
-        }
-    </style>
+
     <div>
         <h3><strong>Thể loại</strong></h3>
     </div>
     <div class="row">
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Tất cả
-                </div>
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/banhkem.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Món bánh
-                </div>
+            <div style="margin-top: 5px">
+                Tất cả
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/barbecue.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Món nướng
-                </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/banhkem.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/pan.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Món chiên/xào
-                </div>
+            <div style="margin-top: 5px">
+                Món bánh
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/noi.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Món lẩu
-                </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/barbecue.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/cooking.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Món hấp
-                </div>
+            <div style="margin-top: 5px">
+                Món nướng
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/nuoc.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Thức uống
-                </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/pan.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
+            <div style="margin-top: 5px">
+                Món chiên/xào
+            </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/noi.svg') }}" alt="" class="img-responsive">
+            </div>
+            <div style="margin-top: 5px">
+                Món lẩu
+            </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/cooking.svg') }}" alt="" class="img-responsive">
+            </div>
+            <div style="margin-top: 5px">
+                Món hấp
+            </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/nuoc.svg') }}" alt="" class="img-responsive">
+            </div>
+            <div style="margin-top: 5px">
+                Thức uống
+            </div>
+        </div>
+
 
 
     </div>
     <div>
-        <h3><strong>Nguyên liệu</strong></h3>
+        <h3><strong>Nguen lieu</strong></h3>
     </div>
     <div class="row">
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Tất cả
-                </div>
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+          <div>
+              <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
+          </div>
+          <div style="margin-top: 5px">
+              Tất cả
+          </div>
+      </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/bo.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/fish.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Hải sản
-                </div>
+            <div style="margin-top: 5px">
+                Thịt bò
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/bo.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Thịt bò
-                </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/ga.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/ga.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Thịt gà
-                </div>
+            <div style="margin-top: 5px">
+                Thịt gà
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/heo.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Thịt heo
-                </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/heo.svg') }}" alt="" class="img-responsive">
             </div>
-        </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
-                <div>
-                    <img src="{{ URL::asset('images/icon/trứng.svg') }}" alt="" class="img-responsive">
-                </div>
-                <div style="margin-top: 5px">
-                    Trứng
-                </div>
+            <div style="margin-top: 5px">
+                Thịt heo
             </div>
-        </a>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-1 text-center" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div>
+                <img src="{{ URL::asset('images/icon/trứng.svg') }}" alt="" class="img-responsive">
+            </div>
+            <div style="margin-top: 5px">
+                Trứng
+            </div>
+        </div>
+
 
     </div>
-    <div class="col-md-5" id="timkiem">
-        <h5>Tìm thêm nguyên liệu</h5>
-        <input type="text" class="form-control" placeholder="Nhập tên nguyên liệu (ví dụ đùi gà, ức gà, sườn heo, ...)" onkeyup="showResult(this.value)">
-
-        <select multiple class="form-control" id="livesearch">
-
-        </select>
-        <br>
-        <div id="nguyenlieu"></div>
-        <p><em>Chọn vào để loại bỏ</em>
-        </p>
-        <center>
-          <button type="button" class="btn btn-warning btn-lg">Tìm kiếm</button>
-        <center>
+    <input type="text" class="form-control" placeholder="Text input">
+    <div class="">
+      <select multiple class="form-control">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
     </div>
-
-
 
 
 </div>
@@ -205,10 +172,7 @@
                         @endforeach
                          ...</em><br>
                         <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-                        @if ($v->video != null)
-                        <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">
-                        @endif
-                        @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
+                        <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
                         </div>
                     </a>
                     @endforeach
@@ -293,50 +257,4 @@
 
         </div>
     </div>
-</div>
-@endsection
-
-@section('addscript')
-<script type="text/javascript">
-$(document).ready(function(){
-    $(document).on('click', '.zoom', function() {
-        if ($(this).text().trim() == "Tất cả") {
-          $("#nguyenlieu").html("");
-        }
-        else{
-          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + $(this).text().trim() + "</button>");
-        }
-    });
-
-    $(document).on('click', '.bo', function() {
-        $(this).remove()
-    });
-
-});
-</script>
-<script>
-function showResult(str) {
-  if (str.length==0) {
-    // document.getElementById("livesearchNguyenlieu").innerHTML="";
-    // document.getElementById("livesearchNguyenlieu").style.border="0px";
-    return;
-  }
-  if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  } else {  // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("livesearch").innerHTML=this.responseText;
-    }
-  }
-  xmlhttp.open("GET","/livesearchNguyenlieu/"+str,true);
-  xmlhttp.send();
-}
-</script>
-
-
-
-@endsection
+</div>@endsection

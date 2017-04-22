@@ -11,9 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      Eloquent::unguard();
-     $this->call('UserTableSeeder');
-
       DB::table('Categories')->insert(
       [
         ['name' => 'Món chính'],
@@ -58,7 +55,7 @@ class DatabaseSeeder extends Seeder
       ]
       );
 
-      /*DB::table('users')->insert([
+      DB::table('users')->insert([
             'name' => str_random(10),
             'email' => str_random(10).'@gmail.com',
             'password' => bcrypt('secret'),
@@ -68,7 +65,7 @@ class DatabaseSeeder extends Seeder
               'name' => str_random(10),
               'email' => str_random(10).'@gmail.com',
               'password' => bcrypt('secret'),
-          ]);*/
+          ]);
 
 
       DB::table('DSMonan')->insert(
