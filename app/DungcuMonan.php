@@ -9,4 +9,10 @@ class DungcuMonan extends Model
     protected $table = 'DungcuMonan';
 
     public $timestamps = false;
+
+    public function ten()
+    {
+        return $this->hasOne('App\DSDungcu', 'id', 'idDungcu');
+    }
+
 }

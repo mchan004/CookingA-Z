@@ -17,7 +17,7 @@ class DSMonan extends Model
 
   public function DungcuMonan()
   {
-      return $this->hasMany('App\DungcuMonan', 'idMonan', 'id');
+      return $this->hasManyThrough('App\DSDungcu', 'App\DungcuMonan', 'idMonan', 'id', 'id');
   }
 
   public function comments()

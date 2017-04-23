@@ -70,8 +70,12 @@
         <!--item-->
 
 @foreach ($newest as $v)
+      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
         <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
-          <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
+          <div class="row" style="margin-right: -12px">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}"
+              style="height: 250px;" width="100%" class="img-responsive">
+          </div>
           <div class="row" style="margin-left: -7px">
             <h3>{{$v->tenMonan}}</h3>
             <small><em>
@@ -80,8 +84,9 @@
             @endforeach
              ...</em><br>
             <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20"> Khó: {{$v->thoigian}}p</small> </div>
+            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
         </div>
+      </a>
 @endforeach
 
       </div>
@@ -98,7 +103,7 @@
             <div class="col-sm-12 col-xs-6">
               <div class="row" style="margin-left: -7px;">
                 <h3><a href="#">{{$v->tenMonan}}</a></h3>
-                <small>Dễ: 15p</small> </div>
+                <small>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
             </div>
           </div>
         </div>
@@ -117,7 +122,7 @@
             <div class="col-sm-12 col-xs-6">
               <div class="row" style="margin-left: -7px;">
                 <h3><a href="#">{{$v->tenMonan}}</a></h3>
-                <small>Dễ: 15p</small> </div>
+                <small>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
             </div>
           </div>
         </div>

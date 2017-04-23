@@ -9,6 +9,7 @@
 <!-- Bootstrap -->
 <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/star-rating-svg.css') }}">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -27,9 +28,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Món chính<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Món tráng miệng, bánh</a></li>
-        <li><a href="#">Thức uống</a></li>
+        <li class="active"><a href="/monan/monchinh">Món chính<span class="sr-only">(current)</span></a></li>
+        <li><a href="/monan/monbanh">Món tráng miệng, bánh</a></li>
+        <li><a href="/monan/thucuong">Thức uống</a></li>
         <!--<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
