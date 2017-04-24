@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Tất cả" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -32,7 +32,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món bánh" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/banhkem.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -42,7 +42,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món nướng" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/barbecue.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -52,7 +52,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món chiên/xào" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/pan.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -62,7 +62,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món lẩu" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/noi.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -72,7 +72,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món hấp" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/cooking.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -82,7 +82,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thức uống" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/nuoc.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -99,7 +99,7 @@
     </div>
     <div class="row">
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Tất cả" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -109,7 +109,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Hải sản" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/fish.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -119,7 +119,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt bò" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/bo.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -129,7 +129,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt gà" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/ga.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -139,7 +139,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt heo" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/heo.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -149,9 +149,9 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Trứng" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
-                    <img src="{{ URL::asset('images/icon/trứng.svg') }}" alt="" class="img-responsive">
+                    <img src="{{ URL::asset('images/icon/trung.svg') }}" alt="" class="img-responsive">
                 </div>
                 <div style="margin-top: 5px">
                     Trứng
@@ -161,19 +161,36 @@
 
     </div>
     <div class="col-md-5" id="timkiem">
+      <form class="" action="/timmonan" method="post">
+        {{ csrf_field() }}
         <h5>Tìm thêm nguyên liệu</h5>
         <input type="text" class="form-control" placeholder="Nhập tên nguyên liệu (ví dụ đùi gà, ức gà, sườn heo, ...)" onkeyup="showResult(this.value)">
 
         <select multiple class="form-control" id="livesearch">
-
         </select>
         <br>
-        <div id="nguyenlieu"></div>
+        <div id="nguyenlieu">
+          @isset($tl)
+            @if ($tl == "monbanh")
+
+              <button type="button" class="btn btn-success bo">Món bánh</button>
+              <input type="hidden" name="theloai[]" value="2">
+
+            @elseif ($tl == "thucuong")
+
+              <button type="button" class="btn btn-success bo">Thức uống</button>
+              <input type="hidden" name="theloai[]" value="">
+
+            @endif
+          @endisset
+
+        </div>
         <p><em>Chọn vào để loại bỏ</em>
         </p>
         <center>
-          <button type="button" class="btn btn-warning btn-lg">Tìm kiếm</button>
+          <button type="submit" class="btn btn-warning btn-lg">Tìm kiếm</button>
         <center>
+      </form>
     </div>
 
 
@@ -300,16 +317,28 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(document).on('click', '.zoom', function() {
-        if ($(this).text().trim() == "Tất cả") {
+        if ($(this).attr("name") == "Tất cả") {
           $("#nguyenlieu").html("");
         }
         else{
-          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + $(this).text().trim() + "</button>");
+          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + $(this).attr("name") + "</button>" + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("name") + "\">");
         }
     });
 
     $(document).on('click', '.bo', function() {
         $(this).remove()
+    });
+
+
+
+    $("select").change(function() {
+      var str = "";
+      $( "select option:selected" ).each(function() {
+        $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> "
+        + $(this).text() + "</button>" + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("value") + "\">");
+      });
+
+
     });
 
 });

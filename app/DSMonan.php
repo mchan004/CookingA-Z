@@ -14,6 +14,7 @@ class DSMonan extends Model
   {
       return $this->hasManyThrough('App\DSNguyenlieu', 'App\NguyenlieuMonan', 'idMonan', 'id', 'id')->orderBy('priority', 'asc');
   }
+  
 
   public function DungcuMonan()
   {

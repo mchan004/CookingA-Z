@@ -15,11 +15,15 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/{id}/{title}', 'HomeController@inside')->where('id', '[0-9]+');
 
+Route::get('/monan/', 'HomeController@outside');
+
 Route::get('/monan/{tl}', 'HomeController@outside');
 
 Route::post('/timmonan', 'HomeController@timmonan');
 
 Route::get('/livesearchNguyenlieu/{nhap}', 'HomeController@livesearchNguyenlieu');
+
+
 
 /////////
 //Login//

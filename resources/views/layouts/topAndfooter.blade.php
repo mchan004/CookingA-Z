@@ -24,7 +24,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="#">Cooking A-Z</a></div>
+      <a class="navbar-brand" href="/">Cooking A-Z</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
       <ul class="nav navbar-nav">
@@ -71,20 +71,20 @@
     <div class="col-xs-6 col-sm-2">
       <div class="row">
         <ul>
-          <li><a href="http://yourwebsite.com/" >Trang chủ</a></li>
-          <li><a href="http://yourwebsite.com/" >Món chính</a></li>
-          <li><a href="http://yourwebsite.com/" >Món tráng miệng, bánh</a></li>
-          <li><a href="http://yourwebsite.com/" >Thức uống</a></li>
+          <li><a href="/" >Trang chủ</a></li>
+          <li><a href="/monan/monchinh" >Món chính</a></li>
+          <li><a href="/monan/monbanh" >Món tráng miệng, bánh</a></li>
+          <li><a href="/monan/thucuong" >Thức uống</a></li>
         </ul>
       </div>
     </div>
     <div class="col-xs-6 col-sm-2">
       <div class="row">
         <ul>
-          <li><a href="http://yourwebsite.com/" ><strong>Blog</strong></a></li>
-          <li><a href="http://yourwebsite.com/" >Đăng nhập</a></li>
-          <li><a href="http://yourwebsite.com/" >Bookmark</a></li>
-          <li><a href="http://yourwebsite.com/" >Thảo luận</a></li>
+          <li><a href="/" ><strong>Blog</strong></a></li>
+          <li><a href="/" >Đăng nhập</a></li>
+          <li><a href="/" >Bookmark</a></li>
+          <li><a href="/" >Thảo luận</a></li>
         </ul>
       </div>
     </div>

@@ -14,4 +14,9 @@ class NguyenlieuMonan extends Model
     {
         return $this->hasOne('App\DSNguyenlieu', 'id', 'idNguyenlieu');
     }
+
+    public function tenMonan()
+    {
+        return $this->hasOne('App\DSMonan', 'id', 'idMonan');
+    }
 }
