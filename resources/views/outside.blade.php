@@ -21,7 +21,7 @@
         <h3><strong>Thể loại</strong></h3>
     </div>
     <div class="row">
-        <a href="#timkiem">
+        <a href="/monan">
             <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Tất cả" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/all.svg') }}" alt="" class="img-responsive">
@@ -31,8 +31,8 @@
                 </div>
             </div>
         </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món bánh" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+        <a href="/monan/monbanh">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/banhkem.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -42,7 +42,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món nướng" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món nướng" idNguyenlieu="5" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/barbecue.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -52,7 +52,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món chiên/xào" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món chiên/xào" idNguyenlieu="1" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/pan.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -62,17 +62,17 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món lẩu" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món nấu" idNguyenlieu="10" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/noi.svg') }}" alt="" class="img-responsive">
                 </div>
                 <div style="margin-top: 5px">
-                    Món lẩu
+                    Món nấu
                 </div>
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món hấp" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Món hấp" idNguyenlieu="3" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/cooking.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -81,8 +81,8 @@
                 </div>
             </div>
         </a>
-        <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thức uống" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+        <a href="/monan/thucuong">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/nuoc.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -173,13 +173,12 @@
           @isset($tl)
             @if ($tl == "monbanh")
 
-              <button type="button" class="btn btn-success bo">Món bánh</button>
-              <input type="hidden" name="theloai[]" value="2">
+              <button type="button" class="btn btn-success bo">Món bánh<input type="hidden" name="theloai" value="2"></button>
 
             @elseif ($tl == "thucuong")
 
-              <button type="button" class="btn btn-success bo">Thức uống</button>
-              <input type="hidden" name="theloai[]" value="">
+              <button type="button" class="btn btn-success bo">Thức uống<input type="hidden" name="theloai" value="3"></button>
+
 
             @endif
           @endisset
@@ -317,11 +316,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(document).on('click', '.zoom', function() {
-        if ($(this).attr("name") == "Tất cả") {
+      var ten = $(this).attr("name");
+        if (ten == "Tất cả") {
           $("#nguyenlieu").html("");
         }
+        else if (ten == "Món nướng" || ten == "Món chiên/xào" || ten == "Món nấu" || ten == "Món hấp") {
+          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + ten + "<input type=\"hidden\" name=\"dungcu[]\" value=\"" + $(this).attr("idNguyenlieu") + "\"></button>");
+        }
         else{
-          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + $(this).attr("name") + "</button>" + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("name") + "\">");
+          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + ten + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("idNguyenlieu") + "\"></button>");
         }
     });
 
@@ -332,10 +335,9 @@ $(document).ready(function(){
 
 
     $("select").change(function() {
-      var str = "";
       $( "select option:selected" ).each(function() {
         $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> "
-        + $(this).text() + "</button>" + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("value") + "\">");
+        + $(this).text() + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("value") + "\"></button>");
       });
 
 

@@ -79,36 +79,55 @@ class HomeController extends Controller
     public function timmonan(Request $request)
     {
 
-      // $wh = array(array());
+
+      $monan = DB::table('DSMonan');
+
+      if (isset($request->nguyenlieu)) {
+        $monan = $monan->join('NguyenlieuMonan', 'DSMonan.id', '=', 'NguyenlieuMonan.idMonan')
+                       ->where('NguyenlieuMonan.idNguyenlieu', $request->nguyenlieu);
+      }
+
+      if (isset($request->dungcu)) {
+        $monan = $monan->join('DungcuMonan', 'DSMonan.id', '=', 'DungcuMonan.idMonan')
+                       ->where('DungcuMonan.idDungcu', $request->dungcu);
+      }
+
+      if (isset($request->theloai)) {
+        $monan = $monan->where('DSMonan.categorie', $request->theloai);
+      }
+
+
+      $monan = $monan->select('DSMonan.*')->get();
+      //$this->NL = $request->nguyenlieu;
       //
-      // $NL = $request->nguyenlieu;
       //
-      // for ($i=0; $i < count($NL); $i++) {
-      //   $wh[$i][0] = 'DSNguyenlieu.tenNguyenlieu';
-      //   $wh[$i][1] = '=';
-      //   $wh[$i][2] = $NL[$i];
+      //
+      // $monan = DSMonan::whereHas('NguyenlieuMonan', function ($query) {
+      //   $query->where('idNguyenlieu', '=', $this->NL);
+      // })->get();
+      // if (isset($request->theloai)) {
+      //   $monan = $monan->where('categorie', $request->theloai);
       // }
       //
-      // $monan = DB::table('DSMonan')
-      // ->join('NguyenlieuMonan', 'DSMonan.id', '=', 'NguyenlieuMonan.idMonan')
-      // ->join('DSNguyenlieu', 'DSNguyenlieu.id', '=', 'NguyenlieuMonan.idNguyenlieu')
-      //
-      //
-      // ->select('DSMonan.*')
-      // ->get()->where($wh);
-      $this->NL = $request->nguyenlieu;
+      // if (isset($request->dungcu)) {
+      //   $monan->where(function ($subQuery)
+      //   {
+      //     $subwhere->whereHas('NguyenlieuMonan', function ($q)
+      //     {
+      //       $q->where('idDungcu', '1');
+      //     });
+      //   });
+      // }
 
-
-      $monan = DSMonan::whereHas('NguyenlieuMonan', function ($query) {
-        $query->where('idNguyenlieu', '=', $this->NL);
-      })->get();
 
 
 
 
       //$monan = NguyenlieuMonan::where('', '');
-      //print_r($NL);
+
       print_r($monan);
+      //print_r($request->theloai);
+      //print_r($request->dungcu);
       //return view('outside', ['monan' => $monan]);
     }
 
