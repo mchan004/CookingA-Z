@@ -15,19 +15,9 @@ class DSMonan extends Model
       return $this->hasManyThrough('App\DSNguyenlieu', 'App\NguyenlieuMonan', 'idMonan', 'id', 'id')->orderBy('priority', 'asc');
   }
 
-  public function TimNguyenlieuMonan()
-  {
-      return $this->hasMany('App\NguyenlieuMonan', 'idMonan', 'id');
-  }
-
   public function DungcuMonan()
   {
       return $this->hasManyThrough('App\DSDungcu', 'App\DungcuMonan', 'idMonan', 'id', 'id');
-  }
-
-  public function TimDungcuMonan()
-  {
-      return $this->hasMany('App\DungcuMonan', 'idMonan', 'id');
   }
 
   public function comments()

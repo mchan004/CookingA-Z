@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index()
     {
       $newest = DSMonan::orderBy('created_at', 'desc')
-                        ->take(9)
+                        ->take(12)
                         ->get();
       $thucuong = DSMonan::where('categorie', 3)
                         ->orderBy('created_at', 'desc')
@@ -28,6 +28,7 @@ class HomeController extends Controller
                         ->orderBy('created_at', 'desc')
                         ->take(8)
                         ->get();
+
 
       return view('home', ['newest' => $newest, 'thucuong' => $thucuong, 'trangmieng' => $trangmieng, 'title' => 'Từ điển món ăn CookingA-Z']);
     }
@@ -44,24 +45,24 @@ class HomeController extends Controller
       if ($tl == 'monbanh') {
           $newest = DSMonan::where('categorie', 2)
                             ->orderBy('created_at', 'desc')
-                            ->take(20)
+                            ->take(32)
                             ->get();
       }
       elseif ($tl == 'thucuong') {
           $newest = DSMonan::where('categorie', 3)
                             ->orderBy('created_at', 'desc')
-                            ->take(20)
+                            ->take(32)
                             ->get();
       }
       elseif ($tl == 'monchinh') {
           $newest = DSMonan::where('categorie', 1)
                         ->orderBy('created_at', 'desc')
-                        ->take(20)
+                        ->take(32)
                         ->get();
       }
       else {
           $newest = DSMonan::orderBy('created_at', 'desc')
-                        ->take(20)
+                        ->take(32)
                         ->get();
 
       }
@@ -74,18 +75,23 @@ class HomeController extends Controller
 
     }
 
-    private $NL;
 
     public function timmonan(Request $request)
     {
-
-
       $monan = DB::table('DSMonan');
 
-      if (isset($request->nguyenlieu)) {
-        $monan = $monan->join('NguyenlieuMonan', 'DSMonan.id', '=', 'NguyenlieuMonan.idMonan')
-                       ->where('NguyenlieuMonan.idNguyenlieu', $request->nguyenlieu);
+      if (isset($request->nguyenlieu) || isset($request->group)) {
+        $monan = $monan->join('NguyenlieuMonan', 'DSMonan.id', '=', 'NguyenlieuMonan.idMonan');
+        if (isset($request->nguyenlieu)) {
+          $monan = $monan->where('NguyenlieuMonan.idNguyenlieu', $request->nguyenlieu);
+        }
+        if (isset($request->group)) {
+          $monan = $monan->join('DSNguyenlieu', 'DSNguyenlieu.id', '=', 'NguyenlieuMonan.idNguyenlieu');
+          $monan = $monan->where('DSNguyenlieu.group', 'Heo');
+        }
+
       }
+
 
       if (isset($request->dungcu)) {
         $monan = $monan->join('DungcuMonan', 'DSMonan.id', '=', 'DungcuMonan.idMonan')
@@ -96,49 +102,18 @@ class HomeController extends Controller
         $monan = $monan->where('DSMonan.categorie', $request->theloai);
       }
 
-
-      $monan = $monan->select('DSMonan.*')->get();
-      //$this->NL = $request->nguyenlieu;
-      //
-      //
-      //
-      // $monan = DSMonan::whereHas('NguyenlieuMonan', function ($query) {
-      //   $query->where('idNguyenlieu', '=', $this->NL);
-      // })->get();
-      // if (isset($request->theloai)) {
-      //   $monan = $monan->where('categorie', $request->theloai);
-      // }
-      //
-      // if (isset($request->dungcu)) {
-      //   $monan->where(function ($subQuery)
-      //   {
-      //     $subwhere->whereHas('NguyenlieuMonan', function ($q)
-      //     {
-      //       $q->where('idDungcu', '1');
-      //     });
-      //   });
-      // }
+      $monan = $monan->select('DSMonan.*')->take(32)->get();
 
 
+      foreach ($monan as $v) {
+        $v->NguyenlieuMonan = DB::table('NguyenlieuMonan')
+            ->join('DSNguyenlieu', 'DSNguyenlieu.id', '=', 'NguyenlieuMonan.idNguyenlieu')
+            ->where('NguyenlieuMonan.idMonan', $v->id)
+            ->select('DSNguyenlieu.tenNguyenlieu')->orderBy('priority', 'desc')->take(4)->get();
+      }
 
-
-
-      //$monan = NguyenlieuMonan::where('', '');
-
-      print_r($monan);
-      //print_r($request->theloai);
-      //print_r($request->dungcu);
-      //return view('outside', ['monan' => $monan]);
+      return view('outside', ['newest' => $monan]);
     }
-
-
-
-
-
-
-
-
-
 
 
 

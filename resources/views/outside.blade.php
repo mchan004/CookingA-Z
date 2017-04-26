@@ -109,7 +109,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Hải sản" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Hải sản" idNguyenlieu="Hải sản" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/fish.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -119,7 +119,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt bò" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt bò" idNguyenlieu="Bò" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/bo.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -129,7 +129,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt gà" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt gà" idNguyenlieu="Gà" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/ga.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -139,7 +139,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt heo" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Thịt heo" idNguyenlieu="Heo" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/heo.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -149,7 +149,7 @@
             </div>
         </a>
         <a href="#timkiem">
-            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Trứng" idNguyenlieu="" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
+            <div class="col-xs-2 col-sm-2 col-md-1 text-center zoom" name="Trứng" idNguyenlieu="Trứng" style="margin: 15px; border-left: solid 1px #ecebeb; border-right: solid 1px #ecebeb;">
                 <div>
                     <img src="{{ URL::asset('images/icon/trung.svg') }}" alt="" class="img-responsive">
                 </div>
@@ -221,9 +221,7 @@
                         @endforeach
                          ...</em><br>
                         <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-                        @if ($v->video != null)
-                        <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">
-                        @endif
+                        @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
                         @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
                         </div>
                     </a>
@@ -322,6 +320,9 @@ $(document).ready(function(){
         }
         else if (ten == "Món nướng" || ten == "Món chiên/xào" || ten == "Món nấu" || ten == "Món hấp") {
           $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + ten + "<input type=\"hidden\" name=\"dungcu[]\" value=\"" + $(this).attr("idNguyenlieu") + "\"></button>");
+        }
+        else if (ten == "Thịt heo" || ten == "Trứng" || ten == "Thịt gà" || ten == "Thịt bò" || ten == "Hải sản") {
+          $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + ten + "<input type=\"hidden\" name=\"group[]\" value=\"" + $(this).attr("idNguyenlieu") + "\"></button>");
         }
         else{
           $("#nguyenlieu").append(" <button type=\"button\" class=\"btn btn-success bo\"> " + ten + "<input type=\"hidden\" name=\"nguyenlieu[]\" value=\"" + $(this).attr("idNguyenlieu") + "\"></button>");

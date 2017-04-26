@@ -15,9 +15,11 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/{id}/{title}', 'HomeController@inside')->where('id', '[0-9]+');
 
-Route::get('/monan/', 'HomeController@outside');
+Route::get('/monan', 'HomeController@outside');
 
 Route::get('/monan/{tl}', 'HomeController@outside');
+
+Route::get('/timmonan', 'HomeController@outside');
 
 Route::post('/timmonan', 'HomeController@timmonan');
 

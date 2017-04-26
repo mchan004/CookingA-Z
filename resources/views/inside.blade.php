@@ -17,7 +17,7 @@
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
-        <div class="item active"> <img src="{{ URL::asset('images/hinh1.jpg') }}" alt="Chania"> </div>
+        <div class="item active"> <img src="{{$monan->hinhMinhhoa}}" alt="$monan->tenMonan"> </div>
         <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Chania"> </div>
         <div class="item"> <img src="{{ URL::asset('images/hinh3.jpg') }}" alt="Flower"> </div>
         <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Flower"> </div>

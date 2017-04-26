@@ -13,7 +13,7 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -24,10 +24,10 @@
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
-        <div class="item active"> <img src="{{ URL::asset('images/hinh1.jpg') }}" alt="Chania"> </div>
-        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Chania"> </div>
-        <div class="item"> <img src="{{ URL::asset('images/hinh3.jpg') }}" alt="Flower"> </div>
-        <div class="item"> <img src="{{ URL::asset('images/hinh2.jpg') }}" alt="Flower"> </div>
+        <div class="item active"> <a href="/{{$newest[0]->id}}/{{str_slug($newest[0]->tenMonan, '-')}}"> <img src="{{$newest[0]->hinhMinhhoa}}" alt="{{$newest[0]->tenMonan}}"> </a> </div>
+        <div class="item"> <a href="/{{$trangmieng[0]->id}}/{{str_slug($trangmieng[0]->tenMonan, '-')}}"> <img src="{{$trangmieng[0]->hinhMinhhoa}}" alt="{{$trangmieng[0]->tenMonan}}"> </a> </div>
+        <div class="item"> <a href="/{{$newest[1]->id}}/{{str_slug($newest[1]->tenMonan, '-')}}"> <img src="{{$newest[1]->hinhMinhhoa}}" alt="{{$newest[1]->tenMonan}}"> </a> </div>
+        <div class="item"> <a href="/{{$thucuong[0]->id}}/{{str_slug($thucuong[0]->tenMonan, '-')}}"> <img src="{{$thucuong[0]->hinhMinhhoa}}" alt="{{$thucuong[0]->tenMonan}}"> </a> </div>
       </div>
 
       <!-- Left and right controls -->
@@ -39,7 +39,7 @@
 
 <div class="container-fluid">
   <div class="row text-center">
-    <div class="col-md-6 col-md-offset-3">Click outside the blue container to select this <strong>row</strong>. Columns are always contained within a row. <strong>Rows are indicated by a dashed grey line and rounded corners</strong>. </div>
+    <div class="col-md-6 col-md-offset-3">http://CookingA-Z.net là trang web cung cấp nhiều công thức dạy nấu các món ăn, công thức làm bánh, pha chế thức uống, bạn có thể tìm kiếm các món ăn theo nguyên liệu, dụng cụ có sẵn... </div>
   </div>
 </div>
 <hr>
@@ -84,7 +84,9 @@
             @endforeach
              ...</em><br>
             <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-            <img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
+          </div>
         </div>
       </a>
 @endforeach
@@ -95,18 +97,28 @@
       <div class="row cooking-item">
         <!--item-->
 @foreach ($trangmieng as $v)
+      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
         <div class="col-sm-3">
           <div class="row" style="margin-bottom:3px;">
             <div class="col-sm-12 col-xs-6">
               <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
             </div>
             <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h3><a href="#">{{$v->tenMonan}}</a></h3>
-                <small>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
+              <div class="row" style="margin-left: -7px">
+                <h3>{{$v->tenMonan}}</h3>
+                <small><em>
+                @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+                  {{$v1->tenNguyenlieu}},
+                @endforeach
+                 ...</em><br>
+                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
+                @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
+              </div>
             </div>
           </div>
         </div>
+      </a>
 @endforeach
 
       </div>
@@ -114,22 +126,32 @@
       <div class="row cooking-item">
         <!--item-->
 @foreach ($thucuong as $v)
+      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
         <div class="col-sm-3">
           <div class="row" style="margin-bottom:3px;">
             <div class="col-sm-12 col-xs-6">
               <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
             </div>
             <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px;">
-                <h3><a href="#">{{$v->tenMonan}}</a></h3>
-                <small>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small> </div>
+              <div class="row" style="margin-left: -7px">
+                <h3>{{$v->tenMonan}}</h3>
+                <small><em>
+                @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+                  {{$v1->tenNguyenlieu}},
+                @endforeach
+                 ...</em><br>
+                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
+                @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
+              </div>
             </div>
           </div>
         </div>
+      </a>
 @endforeach
       </div>
       <div class="text-center" style="margin-top:10px">
-        <button type="button" class="btn btn-warning btn-lg">XEM THÊM</button>
+        <button type="button" class="btn btn-warning btn-lg" onclick="location.href = '/monan';">XEM THÊM</button>
       </div>
       <hr>
 
@@ -200,7 +222,6 @@
 
       <div class="row banner hidden-xs">
       	<img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
-
       </div>
 
     </div>
