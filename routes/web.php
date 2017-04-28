@@ -25,27 +25,38 @@ Route::post('/timmonan', 'HomeController@timmonan');
 
 Route::get('/livesearchNguyenlieu/{nhap}', 'HomeController@livesearchNguyenlieu');
 
-
+Auth::routes();
 
 /////////
 //Login//
 /////////
 
-Route::get('/Homelogin', function () {
-    return view('Login.home');
+Route::group(['middleware' => 'auth'], function () {
+
+  Route::get('/user', function () {
+      return view('Login.home');
+  });
+
+  Route::get('/QuanLyBaiViet', function () {
+      return view('Login.tables');
+  });
+
+  Route::get('/GuiBaiMoi', function () {
+      return view('Login.form_wizards');
+  });
+
+  Route::get('user/profile', function () {
+      // Uses Auth Middleware
+  });
+
 });
 
-Route::get('/Login', function () {
-    return view('Login.login');
-});
 
-Route::get('/QuanLyBaiViet', function () {
-    return view('Login.tables');
-});
 
-Route::get('/GuiBaiMoi', function () {
-    return view('Login.form_wizards');
-});
+
+
+
+
 
 Route::get('/nguyenlieu', function () {
     $nguyenlieu=App\DSNguyenlieu::All();
@@ -53,7 +64,7 @@ Route::get('/nguyenlieu', function () {
     foreach ($nguyenlieuchitiet as $key) {
       return view('quanlynguyenlieu')->with('nguyenlieu',$nguyenlieu)->with('nguyenlieuchitiet',$key);
     }
-    });
+});
 
 Route::get('/nguyenlieu/{id}', function ($id) {
   $nguyenlieu=App\DSNguyenlieu::All();
@@ -61,4 +72,4 @@ Route::get('/nguyenlieu/{id}', function ($id) {
   foreach ($nguyenlieuchitiet as $key) {
     return view('quanlynguyenlieu')->with('nguyenlieu',$nguyenlieu)->with('nguyenlieuchitiet',$key);
   }
-    });
+});

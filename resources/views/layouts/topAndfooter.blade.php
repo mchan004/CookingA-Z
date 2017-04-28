@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title> @yield('title') </title>
 
 <!-- Bootstrap -->
@@ -16,6 +17,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<script>
+    window.Laravel = {!! json_encode([
+        'csrfToken' => csrf_token(),
+    ]) !!};
+</script>
 
 </head>
 <body>
@@ -52,8 +59,12 @@
       </form> -->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><strong>Blog</strong></a></li>
-        <li><a href="#">Đăng nhập</a></li>
         <li><a href="#">Thảo luận</a></li>
+        @if (Auth::guest())
+          <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+        @else
+          <li><a href="{{ url('user') }}">Trang cá nhân</a></li>
+        @endif
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -82,7 +93,11 @@
       <div class="row">
         <ul>
           <li><a href="/" ><strong>Blog</strong></a></li>
-          <li><a href="/" >Đăng nhập</a></li>
+          @if (Auth::guest())
+            <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+          @else
+            <li><a href="{{ url('user') }}">Trang cá nhân</a></li>
+          @endif
           <li><a href="/" >Bookmark</a></li>
           <li><a href="/" >Thảo luận</a></li>
         </ul>
