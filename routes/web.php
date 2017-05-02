@@ -23,7 +23,7 @@ Route::get('/timmonan', 'HomeController@outside');
 
 Route::post('/timmonan', 'HomeController@timmonan');
 
-Route::get('/livesearchNguyenlieu/{nhap}', 'HomeController@livesearchNguyenlieu');
+Route::get('/livesearchNguyenlieu/{nhap}', 'AjaxController@livesearchNguyenlieu');
 
 Auth::routes();
 
@@ -48,6 +48,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('user/profile', function () {
       // Uses Auth Middleware
   });
+
+
+  ////////////
+  //Bookmark//
+  ////////////
+  Route::post('/bookmark', 'AjaxController@AddBookmark');
+  Route::post('/unbookmark', 'AjaxController@RemoveBookmark');
 
 });
 

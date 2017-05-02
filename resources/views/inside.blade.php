@@ -36,8 +36,9 @@
             <div class="col-sm-7">
                     <div class="row">
                         <h1>{{$monan->tenMonan}}</h1>
-                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a>
+                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> | <a href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> Lưu món ăn yêu thích</a>
                     </div>
+
                     <div class="row" style="margin-top:10px">
                         <p class="text-justify">{{$monan->gioithieu}}</p>
                     </div>
@@ -57,6 +58,7 @@
                         <p>Thời gian nấu: {{$monan->thoigian}} phút</p>
                         <p>Độ khó: @if ($monan->dokho == 3) Bình thường @elseif ($monan->dokho == 4) Khó @else Dễ @endif</p>
                         <p>Nguyên liệu: {{$nguyenlieu->count()}}</p>
+
                       </div>
                     </div>
 

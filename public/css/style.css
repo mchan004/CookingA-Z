@@ -120,3 +120,8 @@ ul.share-buttons .sr-only {
 .share-links a.pinterest:hover {
         background-position: 0px -300px;
 }
+
+h3 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}

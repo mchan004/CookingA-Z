@@ -18,11 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script>
-    window.Laravel = {!! json_encode([
-        'csrfToken' => csrf_token(),
-    ]) !!};
-</script>
+
 
 </head>
 <body>
@@ -121,8 +117,14 @@
 
 
 <script src="{{ URL::asset('js/jquery-3.2.0.min.js') }}"></script>
-@yield('addscript')
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+<script>
+    window.Laravel = {!! json_encode([
+        'csrfToken' => csrf_token(),
+    ]) !!};
+</script>
+@yield('addscript')
+
 
 
 
