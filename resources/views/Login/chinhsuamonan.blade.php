@@ -74,40 +74,32 @@
                                   </span>
                   </a>
                 </li>
-                <li>
-                  <a href="#step-4">
-                    <span class="step_no">4</span>
-                    <span class="step_descr">
-                                      Step 4<br />
-                                      <small>Step 4 description</small>
-                                  </span>
-                  </a>
-                </li>
+
               </ul>
               <div id="step-1">
                 <form class="form-horizontal form-label-left">
 
                   <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Nguyên liệu món ăn
-                      <br><small>Nguyên liệu cho món ăn của bạn</small>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                       <div class="row">
-                        <input list="browsers" name="browser" class="col-md-9 col-xs-9" onkeyup="showResult(this.value)">
+                        <input list="browsers" name="browser" id="themNL" class="col-md-9 col-xs-9" onkeyup="showResult(this.value)">
                         <datalist id="browsers">
                         </datalist>
-                        <input type="button" name="" value="Thêm" class="col-md-3 col-xs-3">
+                        <input type="button" onclick="them()" value="Thêm" class="col-md-3 col-xs-3">
 
                       </div>
                       <div class="row">
-                        <p><i>Click thêm để thêm nguyên liệu cho món ăn của bạn</i></p>
+                        <p><i>Tìm nguyên liệu và click thêm để thêm nguyên liệu cho món ăn của bạn</i></p>
                       </div>
                       <div class="row" id="DSNguyenlieu">
-                        <table>
+                        <table id="tblNL">
                           <tr>
                             <th width="20%">Số lượng</th>
                             <th width="20%">Đơn vị</th>
                             <th width="60%">Tên nguyên liệu</th>
+                            <th> X </th>
                           </tr>
                           <tr>
                             <td><i>Ví dụ</i></td>
@@ -116,20 +108,18 @@
                             <td><input type="text" placeholder="12" class="form-control" readonly></td>
                             <td><input type="text" placeholder="quả" class="form-control" readonly></td>
                             <td><input type="text" placeholder="Trứng gà" class="form-control" readonly></td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td><input type="text" placeholder="300" class="form-control" readonly></td>
                             <td><input type="text" placeholder="g" class="form-control" readonly></td>
                             <td><input type="text" placeholder="Bột mỳ" class="form-control" readonly></td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td><i>.</i></td>
                           </tr>
-                          <tr>
-                            <td><input type="text"  class="form-control"></td>
-                            <td><input type="text"  class="form-control"></td>
-                            <td><input type="text"  class="form-control"></td>
-                          </tr>
+
                         </table>
 
                       </div>
@@ -156,20 +146,6 @@
                 <p>
                   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
                   eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </div>
-              <div id="step-4">
-                <h2 class="StepTitle">Step 4 Content</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
@@ -208,9 +184,31 @@ function showResult(str) {
       document.getElementById("browsers").innerHTML=this.responseText;
     }
   }
-  xmlhttp.open("GET","/livesearchNguyenlieu/"+str,true);
+  xmlhttp.open("GET","/livesearchNguyenlieuDatalist/"+str,true);
   xmlhttp.send();
 }
+
+function them() {
+  var add = "<tr><td><input type=\"text\" name=\"soluong[]\" class=\"form-control\"></td>           <td><input type=\"text\" name=\"donvi[]\" class=\"form-control\"></td>        <td><input type=\"text\" name=\"nguyenlieu[]\" value=\"" + $('#themNL').val() + "\" class=\"form-control\"></td><td><a href=\"#\" class=\"bo\"><img src=\"/images/icon/dustbin.svg\" alt=\"remove\"></a></td></tr>";
+
+
+  $("#tblNL").append(add);
+};
+</script>
+<script>
+  $(document).ready(function(){
+    $(".stepContainer").attr("style","");
+
+
+
+    $(document).on('click', '.bo', function() {
+        $(this).parent().parent().remove();
+    });
+  });
+
+
+
+
 </script>
 
 

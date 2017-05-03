@@ -25,6 +25,8 @@ Route::post('/timmonan', 'HomeController@timmonan');
 
 Route::get('/livesearchNguyenlieu/{nhap}', 'AjaxController@livesearchNguyenlieu');
 
+Route::get('/livesearchNguyenlieuDatalist/{nhap}', 'AjaxController@livesearchNguyenlieuDatalist');
+
 Auth::routes();
 
 /////////

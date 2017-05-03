@@ -265,6 +265,6 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('Admin/build/js/custom.min.js') }}"></script>
     @yield('addscript')
-    
+
   </body>
 </html>
