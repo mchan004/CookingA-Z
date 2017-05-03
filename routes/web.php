@@ -32,30 +32,26 @@ Auth::routes();
 /////////
 
 Route::group(['middleware' => 'auth'], function () {
-
   Route::get('/user', function () {
       return view('Login.home');
   });
 
-  Route::get('/QuanLyBaiViet', function () {
-      return view('Login.tables');
+  Route::group(['prefix' => 'user'], function () {
+
+        Route::get('QuanLyMonan', 'QuanlyController@QuanlyMonan');
+
+        Route::get('ThemMonan', 'QuanlyController@ThemMonan');
+
+        Route::get('profile', function () {
+            // Uses Auth Middleware
+        });
+
   });
-
-  Route::get('/GuiBaiMoi', function () {
-      return view('Login.form_wizards');
-  });
-
-  Route::get('user/profile', function () {
-      // Uses Auth Middleware
-  });
-
-
   ////////////
   //Bookmark//
   ////////////
-  Route::post('/bookmark', 'AjaxController@AddBookmark');
-  Route::post('/unbookmark', 'AjaxController@RemoveBookmark');
-
+  Route::post('bookmark', 'AjaxController@AddBookmark');
+  Route::post('unbookmark', 'AjaxController@RemoveBookmark');
 });
 
 

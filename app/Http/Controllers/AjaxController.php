@@ -19,7 +19,7 @@ class AjaxController extends Controller
     if (strlen($q)>0) {
       $hint="";
 
-      $NL = DSNguyenlieu::where('tenNguyenlieu', 'like', '%'.$q.'%')->take(20)->get();
+      $NL = DSNguyenlieu::where('tenNguyenlieu', 'like', '%'.$q.'%')->take(15)->get();
       foreach ($NL as $v) {
         $hint .= "<option value=\"" . $v->id . "\">" . $v->tenNguyenlieu . "</option>";
       }
