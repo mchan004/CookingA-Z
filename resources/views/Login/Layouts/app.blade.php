@@ -70,7 +70,7 @@
                   </li>
                   <li class="active"><a><i class="fa fa-edit"></i> Bài viết <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" style="display: block;">
-                      <li><a href="user/QuanLyMonan">Quản lý món ăn</a></li>
+                      <li><a href="/user/QuanLyMonan">Quản lý món ăn</a></li>
                       <li><a href="form_advanced.html">Quản lý nguyên liệu</a></li>
                       <li><a href="form_validation.html">Quản lý dụng cụ</a></li>
                       <li><a href="form_wizards.html">Quản lý comment</a></li>

@@ -79,7 +79,7 @@
                         <form class="form-horizontal form-label-left">
 
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Nguyên liệu món ăn</label>
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Nguyên liệu món ăn</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="row">
                                         <input list="browsers" name="browser" id="themNL" class="col-md-9 col-xs-9" onkeyup="showResult(this.value)">
@@ -166,20 +166,35 @@
                             <input type="text" class="form-control" id="TenMonan">
                           </div>
                           <div class="form-group">
-                            <label for="NoiDung">Hướng dẫn chi tiết</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="noidung">Hướng dẫn chi tiết</label>
+                            <textarea name="noidung" id="noidung" rows="10"></textarea>
                           </div>
                       </div>
 
                     </div>
                     <div id="step-3">
-                        <h2 class="StepTitle">Step 3 Content</h2>
-                        <p>
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                          <label class="control-label col-md-4 col-sm-4 col-xs-12" for="hinhanh">Hình món ăn</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" class="form-control" name="hinhanh" id="hinhanh">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-md-4 col-sm-4 col-xs-12" for="nguon">Nguồn bài viết</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" class="form-control" name="hinhanh" id="hinhanh">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-md-4 col-sm-4 col-xs-12" for="nguon">Nguồn bài viết</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" class="form-control" name="hinhanh" id="hinhanh">
+                          </div>
+                      </div>
+</form>
                     </div>
 
                 </div>
@@ -245,26 +260,24 @@ function them() {
   $("#tblNL").append(add);
 }
 
-</script>
-<script>
-  $(document).ready(function(){
-    $(".stepContainer").attr("style","");
+$(document).ready(function(){
+  $(".stepContainer").attr("style","");
 
-    $(document).on('click', '#themDC', function() {
-      var add = "<li class=\"list-group-item\">" + $('#DC').val() + "<input type=\"hidden\" name=\"dungcu[]\" value=\"" + $('#DC').val() + "\"></li>";
-      $("#DSDungcu").append(add);
-    });
-
-    $(document).on('click', '.bo', function() {
-        $(this).parent().parent().remove();
-    });
+  $(document).on('click', '#themDC', function() {
+    var add = "<li class=\"list-group-item\">" + $('#DC').val() + "<input type=\"hidden\" name=\"dungcu[]\" value=\"" + $('#DC').val() + "\"></li>";
+    $("#DSDungcu").append(add);
   });
 
+  $(document).on('click', '.bo', function() {
+      $(this).parent().parent().remove();
+  });
+});
+
 
 
 
 </script>
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'noidung' );
 </script>
