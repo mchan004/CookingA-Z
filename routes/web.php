@@ -27,6 +27,8 @@ Route::get('/livesearchNguyenlieu/{nhap}', 'AjaxController@livesearchNguyenlieu'
 
 Route::get('/livesearchNguyenlieuDatalist/{nhap}', 'AjaxController@livesearchNguyenlieuDatalist');
 
+Route::get('/livesearchDungcuDatalist/{nhap}', 'AjaxController@livesearchDungcuDatalist');
+
 Auth::routes();
 
 /////////

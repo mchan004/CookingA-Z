@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DSMonan;
 use App\NguyenlieuMonan;
 use App\DSNguyenlieu;
+use App\DSDungcu;
 
 class AjaxController extends Controller
 {
@@ -42,6 +43,26 @@ class AjaxController extends Controller
       $NL = DSNguyenlieu::where('tenNguyenlieu', 'like', '%'.$q.'%')->take(15)->get();
       foreach ($NL as $v) {
         $hint .= "<option value=\"" . $v->tenNguyenlieu . "\">" . $v->group . "</option>";
+      }
+
+    }
+
+    echo $hint;
+  }
+
+  public function livesearchDungcuDatalist($nhap)
+  {
+
+    //get the q parameter from URL
+    $q=$nhap;
+
+    //lookup all links from the xml file if length of q>0
+    if (strlen($q)>0) {
+      $hint="";
+
+      $NL = DSDungcu::where('tenDungcu', 'like', '%'.$q.'%')->take(15)->get();
+      foreach ($NL as $v) {
+        $hint .= "<option value=\"" . $v->tenDungcu . "\">";
       }
 
     }
