@@ -44,7 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('QuanLyMonan', 'QuanlyController@QuanlyMonan');
 
-        Route::get('ThemMonan', 'QuanlyController@ThemMonan');
+        Route::get('ThemMonan', 'QuanlyController@showThemMonan');
+
+        Route::post('ThemMonan', 'QuanlyController@ThemMonan');
 
         Route::get('profile', function () {
             // Uses Auth Middleware

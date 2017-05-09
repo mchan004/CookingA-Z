@@ -20,6 +20,9 @@ class HomeController extends Controller
       $newest = DSMonan::orderBy('created_at', 'desc')
                         ->take(12)
                         ->get();
+
+      //print_r($newest[0]->NguyenlieuMonan->pluck('tenNguyenlieu'));
+
       $thucuong = DSMonan::where('categorie', 3)
                         ->orderBy('created_at', 'desc')
                         ->take(8)

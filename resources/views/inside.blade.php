@@ -106,7 +106,7 @@
             <div class="">
             	<div class="">
                     <h2>Cách làm món {{$monan->tenMonan}}</h2>
-                    {{$monan->huongdan}}
+                    {!!$monan->huongdan!!}
 				      </div>
             </div>
         </div>
