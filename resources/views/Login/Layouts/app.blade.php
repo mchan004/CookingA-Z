@@ -61,7 +61,7 @@
               <div class="menu_section" class="active">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="/user"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" style="display: block;">
                       <li><a href="/user/thongtin">Thông tin cá nhân</a></li>
                       <li><a href="/user/doimatkhau">Đổi mật khẩu</a></li>

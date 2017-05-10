@@ -7,6 +7,8 @@ use App\DSMonan;
 use App\NguyenlieuMonan;
 use App\DSNguyenlieu;
 use App\DSDungcu;
+use App\BookmarksMonan;
+use Illuminate\Support\Facades\Auth;
 
 class AjaxController extends Controller
 {
@@ -73,7 +75,11 @@ class AjaxController extends Controller
 
   public function AddBookmark($id)
   {
-
+    $book = new BookmarksMonan;
+    $book->idMonan = $id;
+    $book->createby = Auth::id();
+    $book->save();
+    echo "Lưu thành công!";
   }
 
   public function RemoveBookmark($id)

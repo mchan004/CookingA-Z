@@ -36,9 +36,7 @@ Auth::routes();
 /////////
 
 Route::group(['middleware' => 'auth'], function () {
-  Route::get('/user', function () {
-      return view('Login.home');
-  });
+  Route::get('/user', 'QuanlyController@home');
 
   Route::group(['prefix' => 'user'], function () {
 
@@ -56,8 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
   ////////////
   //Bookmark//
   ////////////
-  Route::post('bookmark', 'AjaxController@AddBookmark');
-  Route::post('unbookmark', 'AjaxController@RemoveBookmark');
+  Route::get('/bookmark/{id}', 'AjaxController@AddBookmark');
+  Route::get('/unbookmark/{id}', 'AjaxController@RemoveBookmark');
 });
 
 

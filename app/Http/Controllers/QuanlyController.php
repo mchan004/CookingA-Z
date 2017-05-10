@@ -11,10 +11,23 @@ use App\NguyenlieuMonan;
 use App\DSNguyenlieu;
 use App\DungcuMonan;
 use App\DSDungcu;
+use App\BookmarksMonan;
 use Illuminate\Support\Facades\Auth;
 
 class QuanlyController extends Controller
 {
+  public function home()
+  {
+    $book = DB::table('DSMonan')
+      ->join('BookmarksMonan', 'BookmarksMonan.idMonan', '=', 'DSMonan.id')
+      ->where('BookmarksMonan.createby', Auth::id())->get();
+    return view('Login.home', ['book' => $book]);
+  }
+
+
+
+
+
   public function QuanlyMonan()
   {
     $DSMonan = DB::table('DSMonan')->orderBy('id')->get();
@@ -94,7 +107,7 @@ class QuanlyController extends Controller
     }
 
 
-
+    echo "Them thanh cong!!! Tiep tuc di may be";
 
 
   }

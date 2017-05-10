@@ -330,7 +330,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.bo', function() {
-        $(this).remove()
+        $(this).remove();
     });
 
 

@@ -36,7 +36,7 @@
             <div class="col-sm-7">
                     <div class="row">
                         <h1>{{$monan->tenMonan}}</h1>
-                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> | <a href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> Lưu món ăn yêu thích</a>
+                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> | <a class="book" href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> Lưu món ăn yêu thích</a>
                     </div>
 
                     <div class="row" style="margin-top:10px">
@@ -181,4 +181,15 @@ $(function() {
 	});
 });
 </script>
+<script>
+$(document).ready(function(){
+  $(document).on('click', '.book', function() {
+    $.ajax({url: "/bookmark/{{$monan->id}}", success: function(result){
+        $('.book').html(result);
+    }});
+  });
+
+});
+</script>
+
 @endsection
