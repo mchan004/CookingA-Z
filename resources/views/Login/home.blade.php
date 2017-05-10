@@ -27,6 +27,8 @@
     @foreach ($book as $v)
           <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
             <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
+              
+
               <div class="row" style="margin-right: -12px">
                 <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}"
                   style="height: 250px;" width="100%" class="img-responsive">

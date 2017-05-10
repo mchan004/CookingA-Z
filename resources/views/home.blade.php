@@ -72,20 +72,20 @@
 @foreach ($newest as $v)
       <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
         <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
-          <div class="row" style="margin-right: -12px">
-            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}"
-              style="height: 250px;" width="100%" class="img-responsive">
+          <div class="row hinh-item">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" class="img-responsive">
           </div>
-          <div class="row" style="margin-left: -7px">
+          <div class="time">
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+          </div>
+          <div class="row NL">
             <h3>{{$v->tenMonan}}</h3>
             <small><em>
             @foreach ($v->NguyenlieuMonan->take(4) as $v1)
               {{$v1->tenNguyenlieu}},
             @endforeach
-             ...</em><br>
-            <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-            @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
+             ...</em></small>
           </div>
         </div>
       </a>
@@ -98,24 +98,21 @@
         <!--item-->
 @foreach ($trangmieng as $v)
       <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px">
-                <h3>{{$v->tenMonan}}</h3>
-                <small><em>
-                @foreach ($v->NguyenlieuMonan->take(4) as $v1)
-                  {{$v1->tenNguyenlieu}},
-                @endforeach
-                 ...</em><br>
-                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-                @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
-              </div>
-            </div>
+        <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+          <div class="row hinh-item">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
+          </div>
+          <div class="time">
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+          </div>
+          <div class="row NL">
+            <h3>{{$v->tenMonan}}</h3>
+            <small><em>
+            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+              {{$v1->tenNguyenlieu}},
+            @endforeach
+             ...</em></small>
           </div>
         </div>
       </a>
@@ -127,24 +124,21 @@
         <!--item-->
 @foreach ($thucuong as $v)
       <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px">
-                <h3>{{$v->tenMonan}}</h3>
-                <small><em>
-                @foreach ($v->NguyenlieuMonan->take(4) as $v1)
-                  {{$v1->tenNguyenlieu}},
-                @endforeach
-                 ...</em><br>
-                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-                @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
-              </div>
-            </div>
+        <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+          <div class="row hinh-item">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
+          </div>
+          <div class="time">
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+          </div>
+          <div class="row NL">
+            <h3>{{$v->tenMonan}}</h3>
+            <small><em>
+            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+              {{$v1->tenNguyenlieu}},
+            @endforeach
+             ...</em></small>
           </div>
         </div>
       </a>
@@ -175,7 +169,7 @@
 
     </div>
     <div class="col-sm-2">
-      <div class="row">
+      <div class="row" >
         <div class="well" style="padding-top:0px; margin-left:5px">
         	<div class="row">
             	<h4 style="margin-left:10px">Tài khoản</h4>
@@ -232,36 +226,36 @@
         </div>
       </div>
       <div class="row" style="padding-left:5px">
-      <h4>Những món được đánh giá cao</h4>
-      	<table class="table table-hover table-responsive">
-            <tbody>
-              <tr>
-                <td><strong>1</strong></td>
-                <td>Gà hồng kong nướng muối</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bánh flan trà xanh</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Phô mai que trà xanh</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Gà tiềm thuốc bắc</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Bánh bông lan trứng muối trà xanh</td>
-              </tr>
-            </tbody>
-        </table>
+        <h4>Những món được đánh giá cao</h4>
+        	<table class="table table-hover table-responsive">
+              <tbody>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Gà hồng kong nướng muối</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Bánh flan trà xanh</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Phô mai que trà xanh</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Gà tiềm thuốc bắc</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Bánh bông lan trứng muối trà xanh</td>
+                </tr>
+              </tbody>
+          </table>
       </div>
 
 
       <div class="row banner hidden-xs">
-      	<img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
+      	<img src="/images/banner.png"  alt="..." class="img-responsive">
       </div>
 
     </div>

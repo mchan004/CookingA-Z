@@ -160,7 +160,7 @@
 
 	<div class="col-sm-2">
         <div class="row banner hidden-xs">
-            <img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
+            <img src="/images/banner1.png" alt="..." class="img-responsive">
         </div>
 	</div>
 
