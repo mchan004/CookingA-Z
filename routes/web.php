@@ -40,11 +40,20 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::group(['prefix' => 'user'], function () {
 
-        Route::get('QuanLyMonan', 'QuanlyController@QuanlyMonan');
+        Route::get('QuanLyMonan', 'QuanlyMonanController@QuanlyMonan');
 
-        Route::get('ThemMonan', 'QuanlyController@showThemMonan');
+        Route::group(['prefix' => 'QuanLyMonan'], function () {
+          Route::get('ThemMonan', 'QuanlyMonanController@showThemMonan');
+          Route::post('ThemMonan', 'QuanlyMonanController@ThemMonan');
+          Route::get('suaMonan/{id}', 'QuanlyMonanController@showsuaMonan');
+          Route::post('suaMonan', 'QuanlyMonanController@suamMonan');
 
-        Route::post('ThemMonan', 'QuanlyController@ThemMonan');
+          Route::group(['middleware' => 'admin'], function () {
+            Route::get('publish/{id}', 'QuanlyMonanController@publish');
+            Route::get('unpublish/{id}', 'QuanlyMonanController@unpublish');
+            Route::get('xoa/{id}', 'QuanlyMonanController@XoaMonan');
+          });
+        });
 
         Route::get('profile', function () {
             // Uses Auth Middleware

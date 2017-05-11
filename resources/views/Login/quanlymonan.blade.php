@@ -32,9 +32,17 @@
           </div>
 
           <div class="x_content">
+            @if (session('msg'))
+              <p class="bg-warning"><h1></h1></p>
 
-            <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
-            <p><a href="/user/ThemMonan">Thêm món mới</a></p>
+              <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>{{ session('msg') }}</h4>
+              </div>
+            @endif
+
+            <p>Các món ăn của bạn.</p>
+            <p><a href="/user/QuanLyMonan/ThemMonan" class="btn btn-success">Thêm món mới</a></p>
             <div class="table-responsive">
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
@@ -44,8 +52,10 @@
                     </th>
                     <th class="column-title">Tên món ăn </th>
                     <th class="column-title">Ngày tạo </th>
+                    <th class="column-title">Publish</th>
                     <th class="column-title no-link last"><span class="nobr">Action</span>
                     </th>
+
                     <th class="bulk-actions" colspan="7">
                       <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                     </th>
@@ -58,9 +68,18 @@
                     <td class="a-center ">
                       <input type="checkbox" class="flat" name="table_records">
                     </td>
-                    <td class=" ">{{$v->tenMonan}}</td>
+                    <td class=" "><a href="/user/QuanLyMonan/suaMonan/{{$v->id}}">{{$v->tenMonan}}</a></td>
                     <td class=" ">May 23, 2014 11:47:56 PM </td>
-                    <td class=" last"><a href="#">View</a></td>
+                    <td class=" ">
+                      @if ($v->publish == 1)
+                        <a href="/user/QuanLyMonan/unpublish/{{$v->id}}" class="btn btn-success">v</a>
+                      @else
+                        <a href="/user/QuanLyMonan/publish/{{$v->id}}" class="btn btn-danger">x</a>
+                      @endif
+                    </td>
+                    <td class=" last">
+                      <a href="/user/QuanLyMonan/xoa/{{$v->id}}" class="btn btn-danger">Xoá</a>
+                    </td>
                   </tr>
                   @endforeach
 

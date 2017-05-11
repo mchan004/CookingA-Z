@@ -112,34 +112,26 @@
                                                     <th width="60%">Tên nguyên liệu</th>
                                                     <th> X </th>
                                                 </tr>
+
+                                                @foreach ($DSNguyenlieu as $v)
                                                 <tr>
-                                                    <td><i>Ví dụ</i>
-                                                    </td>
+                                                  <td>
+                                                    <input type="text" name="soluong[]" value="{{$v->soluong}}" class="form-control">
+                                                  </td>
+                                                  <td>
+                                                    <input type="text" name="donvi[]" value="{{$v->donvi}}" class="form-control">
+                                                  </td>
+                                                  <td>
+                                                    <input type="text" name="nguyenlieu[]" value="{{$v->ten->tenNguyenlieu}}" class="form-control">
+                                                  </td>
+                                                  <td>
+                                                    <a href="#" class="bo">
+                                                      <img src="/images/icon/dustbin.svg" alt="remove">
+                                                    </a>
+                                                  </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" placeholder="12" class="form-control" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="quả" class="form-control" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="Trứng gà" class="form-control" readonly>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" placeholder="300" class="form-control" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="g" class="form-control" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="Bột mỳ" class="form-control" readonly>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
+                                                @endforeach
+
                                                 <tr>
                                                     <td><i>.</i>
                                                     </td>
@@ -182,18 +174,18 @@
                                 <div class="col-lg-8 col-sm-10 col-xs-12 col-lg-offset-2 col-sm-offset-1">
                                     <div class="form-group">
                                         <label for="tenMonan">Tên món ăn</label>
-                                        <input type="text" id="tenMonan" name="tenMonan" value="{{ old('tenMonan') }}" class="form-control">
+                                        <input type="text" id="tenMonan" name="tenMonan" value="{{$monan->tenMonan}}" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tenMonan">Giới thiệu</label>
-                                        <textarea name="gioithieu" class="form-control" rows="3">{{ old('gioithieu') }}</textarea>
+                                        <textarea name="gioithieu" class="form-control" rows="3">{{$monan->gioithieu}}</textarea>
 
                                     </div>
 
                                     <div class="form-group">
                                         <label for="huongdan">Hướng dẫn chi tiết</label>
-                                        <textarea class="ckeditor" id="huongdan" name="huongdan" rows="10">{{ old('huongdan') }}</textarea>
+                                        <textarea class="ckeditor" id="huongdan" name="huongdan" rows="10">{{$monan->huongdan}}</textarea>
 
                                     </div>
 
@@ -208,23 +200,23 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12" for="categorie">Thể loại</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                       <select class="form-control" id="categorie" name="categorie">
-                                        <option value="1">Món chính</option>
-                                        <option value="2">Món bánh/Tráng miệng</option>
-                                        <option value="3">Thức uống</option>
+                                        <option value="1" @if ($monan->categorie==1) selected @endif >Món chính</option>
+                                        <option value="2" @if ($monan->categorie==2) selected @endif >Món bánh/Tráng miệng</option>
+                                        <option value="3" @if ($monan->categorie==3) selected @endif >Thức uống</option>
                                       </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12" for="hinhMinhhoa">Hình món ăn</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" class="form-control" name="hinhMinhhoa" value="{{ old('hinhMinhhoa') }}" id="hinhMinhhoa">
+                                        <input type="text" class="form-control" name="hinhMinhhoa" value="{{$monan->hinhMinhhoa}}" id="hinhMinhhoa">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12" for="nguon">Nguồn bài viết</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" class="form-control" name="nguon" value="{{ old('nguon') }}" id="nguon">
+                                        <input type="text" class="form-control" name="nguon" value="{{$monan->nguon}}" id="nguon">
                                     </div>
                                 </div>
 
@@ -233,7 +225,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12" for="thoigian">Thời gian nấu</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" class="form-control" name="thoigian" value="{{ old('thoigian') }}" id="thoigian">
+                                        <input type="text" class="form-control" name="thoigian" value="{{$monan->thoigian}}" id="thoigian">
                                     </div>
                                 </div>
 
@@ -241,9 +233,9 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12" for="dokho">Độ khó</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                       <select class="form-control" id="dokho" name="dokho">
-                                        <option value="2">Dễ</option>
-                                        <option value="3" selected>Trung Bình</option>
-                                        <option value="4">Khó</option>
+                                        <option value="2" @if ($monan->dokho==2) selected @endif >Dễ</option>
+                                        <option value="3" @if ($monan->dokho==3) selected @endif >Trung Bình</option>
+                                        <option value="4" @if ($monan->dokho==4) selected @endif >Khó</option>
                                       </select>
                                     </div>
                                 </div>

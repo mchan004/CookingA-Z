@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\DSNguyenlieu;
+use App\DSDungcu;
 
 class DSMonan extends Model
 {
@@ -19,15 +20,27 @@ class DSMonan extends Model
             'idMonan',
             'idNguyenlieu'
         );
-
   }
-
-
 
   public function DungcuMonan()
   {
-      return $this->hasManyThrough('App\DSDungcu', 'App\DungcuMonan', 'idMonan', 'id', 'id');
+    return $this->belongsToMany(
+            DSDungcu::class,
+            'DungcuMonan',
+            'idMonan',
+            'idDungcu'
+        );
   }
+
+  public function NLMA()
+  {
+    return $this->hasMany('App\NguyenlieuMonan', 'idMonan', 'id');
+  }
+  public function DCMA()
+  {
+    return $this->hasMany('App\DungcuMonan', 'idMonan', 'id');
+  }
+
 
   public function comments()
   {
