@@ -120,20 +120,47 @@
         <div class="col-sm-offset-2">
             <div class="row" id="cm">
             	<div class="well">
+                <form action="/comment/" method="post">
+                  {{ csrf_field() }}
                     <h3 style="margin-top:0">Comment</h3>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <input type="hidden" name="idMonan" value="{{$monan->id}}">
+                    @if (session('msg'))
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4>{{ session('msg') }}</h4>
+                      </div>
+                    @endif
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @foreach ($errors->all() as $error)
+                          {{ $error }}<br>
+                        @endforeach
+                      </div>
+                    @endif
+                    @if (Auth::guest())
+                      Tên của bạn:
+                      <input type="text" class="form-control" name="name" placeholder="Nhập tên của bạn">
+                      Email của bạn:
+                      <input type="text" class="form-control" name="email" placeholder="Nhập email của bạn">
+                      Bình luận
+                    @endif
+                    <textarea class="form-control" rows="3" style="margin-bottom: 5px" name="comment"></textarea>
+                    <input id="star" type="hidden" name="star" value="3">
+                    <b>Đánh giá món ăn này:</b> <span class="rating1"></span><br>
                     <b>Bạn đã nấu thành công chưa?</b>
                         <label class="radio-inline">
-                          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> Chưa
+                          <input type="radio" name="isSuccess" id="inlineRadio1" value="0" checked> Chưa
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Rồi
+                          <input type="radio" name="isSuccess" id="inlineRadio2" value="1"> Rồi
                         </label><br>
                     <div class="text-right">
                     	<button class="cancel-btn btn-std">Cancel</button>
-                        <button class="send-btn btn-std">Send</button>
+                        <button type="submit" class="send-btn btn-std">Send</button>
                     </div>
-                </div>
+                </form>
+              </div>
                 <hr>
                 <ul class="media-list">
 
@@ -146,7 +173,7 @@
                     </div>
                     <div class="media-body">
                       <div>
-                          <h4 class="media-heading">{{$v->name}} <small> | @if ($v->isSuccess == 1) <i><u>Đã nấu thành công</u> @endif khoảng 1 năm trước</i></small></h4>
+                          <h4 class="media-heading">@if ($v->name == null) {{$v->ten->name}} @else {{$v->name}} @endif<small> | @if ($v->isSuccess == 1) <i><u>Đã nấu thành công</u> @endif khoảng 1 năm trước</i></small></h4>
                           {{$v->comment}}
                       </div>
                       <div style="padding-left:15px">
@@ -184,6 +211,19 @@ $(function() {
 	  strokeColor: '#894A00',
 	  strokeWidth: 10,
 	  starSize: 18
+	});
+});
+</script>
+<script>
+$(function() {
+  $(".rating1").starRating({
+	  initialRating: 3,
+	  strokeColor: '#894A00',
+	  strokeWidth: 10,
+	  starSize: 18,
+    callback: function(currentRating, $el){
+      $('#star').val(currentRating);
+    },
 	});
 });
 </script>

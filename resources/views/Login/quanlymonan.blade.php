@@ -33,8 +33,6 @@
 
           <div class="x_content">
             @if (session('msg'))
-              <p class="bg-warning"><h1></h1></p>
-
               <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4>{{ session('msg') }}</h4>

@@ -15,8 +15,8 @@ class CreateCommentTable extends Migration
     {
       Schema::create('Comment', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('name');
-          $table->string('email');
+          $table->string('name')->nullable();
+          $table->string('email')->nullable();
           $table->boolean('isSuccess')->default(0);
           $table->string('comment');
           $table->integer('rate');
