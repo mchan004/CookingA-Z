@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
           Route::get('ThemMonan', 'QuanlyMonanController@showThemMonan');
           Route::post('ThemMonan', 'QuanlyMonanController@ThemMonan');
           Route::get('suaMonan/{id}', 'QuanlyMonanController@showsuaMonan');
-          Route::post('suaMonan', 'QuanlyMonanController@suamMonan');
+          Route::post('suaMonan', 'QuanlyMonanController@suaMonan');
 
           Route::group(['middleware' => 'admin'], function () {
             Route::get('publish/{id}', 'QuanlyMonanController@publish');

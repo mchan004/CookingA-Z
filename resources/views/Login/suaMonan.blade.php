@@ -52,8 +52,9 @@
               @endif
                 <!-- Smart Wizard -->
                 <p>cheme.</p>
-                <form class="form-horizontal form-label-left" action="/user/QuanLyMonan/ThemMonan" method="post">
+                <form class="form-horizontal form-label-left" action="/user/QuanLyMonan/suaMonan" method="post">
                     {{ csrf_field() }}
+                    <input type="hidden" name="idMonan" value="{{$monan->id}}">
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
@@ -107,9 +108,8 @@
                                         <div class="row" id="DSNguyenlieu">
                                             <table id="tblNL">
                                                 <tr>
-                                                    <th width="20%">Số lượng</th>
-                                                    <th width="20%">Đơn vị</th>
-                                                    <th width="60%">Tên nguyên liệu</th>
+                                                    <th width="30%">Số lượng</th>
+                                                    <th width="70%">Tên nguyên liệu</th>
                                                     <th> X </th>
                                                 </tr>
 
@@ -117,9 +117,6 @@
                                                 <tr>
                                                   <td>
                                                     <input type="text" name="soluong[]" value="{{$v->soluong}}" class="form-control">
-                                                  </td>
-                                                  <td>
-                                                    <input type="text" name="donvi[]" value="{{$v->donvi}}" class="form-control">
                                                   </td>
                                                   <td>
                                                     <input type="text" name="nguyenlieu[]" value="{{$v->ten->tenNguyenlieu}}" class="form-control">
@@ -159,7 +156,11 @@
                                             </p>
                                         </div>
                                         <div class="row">
-                                            <ul class="list-group" id="DSDungcu"></ul>
+                                            <ul class="list-group" id="DSDungcu">
+                                              @foreach ($DSDungcu as $v)
+                                                <li class="list-group-item">{{$v->ten->tenDungcu}}<input type="hidden" name="dungcu[]" value="{{$v->ten->tenDungcu}}"></li>
+                                              @endforeach
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +311,7 @@ function showResultDC(str) {
 
 
 function them() {
-  var add = "<tr><td><input type=\"text\" name=\"soluong[]\" class=\"form-control\"></td>           <td><input type=\"text\" name=\"donvi[]\" class=\"form-control\"></td>        <td><input type=\"text\" name=\"nguyenlieu[]\" value=\"" + $('#themNL').val() + "\" class=\"form-control\"></td><td><a href=\"#\" class=\"bo\"><img src=\"/images/icon/dustbin.svg\" alt=\"remove\"></a></td></tr>";
+  var add = "<tr><td><input type=\"text\" name=\"soluong[]\" class=\"form-control\"></td>             <td><input type=\"text\" name=\"nguyenlieu[]\" value=\"" + $('#themNL').val() + "\" class=\"form-control\"></td><td><a href=\"#\" class=\"bo\"><img src=\"/images/icon/dustbin.svg\" alt=\"remove\"></a></td></tr>";
 
 
   $("#tblNL").append(add);
