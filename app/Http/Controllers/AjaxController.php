@@ -75,11 +75,20 @@ class AjaxController extends Controller
 
   public function AddBookmark($id)
   {
-    $book = new BookmarksMonan;
-    $book->idMonan = $id;
-    $book->createby = Auth::id();
-    $book->save();
-    echo "Lưu thành công!";
+    $book = BookmarksMonan::where('idMonan', $id)->where('createby', Auth::id())->first();
+
+    if ($book == null) {
+      $book = new BookmarksMonan;
+      $book->idMonan = $id;
+      $book->createby = Auth::id();
+      $book->save();
+      echo "Huỷ nhớ món ăn";
+    }
+    else {
+      $book->delete();
+      echo "Ghi nhớ món ăn";
+    }
+
   }
 
   public function RemoveBookmark($id)

@@ -12,7 +12,9 @@ class QuanlyController extends Controller
   {
     $book = DB::table('DSMonan')
       ->join('BookmarksMonan', 'BookmarksMonan.idMonan', '=', 'DSMonan.id')
-      ->where('BookmarksMonan.createby', Auth::id())->get();
+      ->where('BookmarksMonan.createby', Auth::id())
+      ->select('DSMonan.*')
+      ->get();
     return view('Login.home', ['book' => $book]);
   }
 }

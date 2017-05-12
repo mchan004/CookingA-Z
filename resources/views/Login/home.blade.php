@@ -22,23 +22,22 @@
 
   <div class="clearfix"></div>
 
-  <div class="row">
+  <div class="row cooking-item">
 
     @foreach ($book as $v)
           <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
-            <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
-              
-
-              <div class="row" style="margin-right: -12px">
-                <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}"
-                  style="height: 250px;" width="100%" class="img-responsive">
+            <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+              <div class="row hinh-item" style="margin-right: -7px">
+                <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
               </div>
-              <div class="row" style="margin-left: -7px">
-                <h3>{{$v->tenMonan}}</h3>
-                <small>
-                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
+              <div class="time">
                 @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
+                <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+              </div>
+
+              <div class="row NL">
+                <h3>{{$v->tenMonan}}</h3>
+
               </div>
             </div>
           </a>

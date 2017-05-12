@@ -36,7 +36,13 @@
             <div class="col-sm-7">
                     <div class="row">
                         <h1>{{$monan->tenMonan}}</h1>
-                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> | <a class="book" href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> Lưu món ăn yêu thích</a>
+                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> |
+                        @if (Auth::guest())
+                          <a class="book" href="/login" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> <span>Lưu món ăn yêu thích</span></a>
+                        @else
+                          <a class="book" href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> <span>@if ($monan == false) Ghi nhớ món ăn @else Huỷ nhớ món ăn @endif </span></a>
+                        @endif
+
                     </div>
 
                     <div class="row" style="margin-top:10px">
@@ -77,7 +83,7 @@
                     <tbody>
                       @foreach ($nguyenlieu as $v)
                         <tr>
-                          <td>{{$v->soluong}} {{$v->donvi}}</td>
+                          <td>{{$v->soluong}}</td>
                           <td>{{$v->ten->tenNguyenlieu}}</td>
                         </tr>
                       @endforeach
@@ -185,7 +191,7 @@ $(function() {
 $(document).ready(function(){
   $(document).on('click', '.book', function() {
     $.ajax({url: "/bookmark/{{$monan->id}}", success: function(result){
-        $('.book').html(result);
+        $('.book span').html(result);
     }});
   });
 

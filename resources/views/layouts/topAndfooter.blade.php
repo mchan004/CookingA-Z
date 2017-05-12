@@ -18,7 +18,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
+<style>
+body {
+  padding-top: 50px;
+  color: #555759;
+}
+</style>
 
 </head>
 <body>
