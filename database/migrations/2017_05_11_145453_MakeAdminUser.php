@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThemcotDSNguyenlieuTable extends Migration
+class MakeAdminUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateThemcotDSNguyenlieuTable extends Migration
      */
     public function up()
     {
-      Schema::table('DSNguyenlieu', function (Blueprint $table) {
-        $table->integer('priority')->default(0);
+      Schema::table('users', function (Blueprint $table) {
+        $table->boolean('Admin')->default(0);
       });
     }
 

@@ -36,8 +36,15 @@
             <div class="col-sm-7">
                     <div class="row">
                         <h1>{{$monan->tenMonan}}</h1>
-                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a>
+                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> |
+                        @if (Auth::guest())
+                          <a class="book" href="/login" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> <span>Lưu món ăn yêu thích</span></a>
+                        @else
+                          <a class="book" href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> <span>@if ($monan == false) Ghi nhớ món ăn @else Huỷ nhớ món ăn @endif </span></a>
+                        @endif
+
                     </div>
+
                     <div class="row" style="margin-top:10px">
                         <p class="text-justify">{{$monan->gioithieu}}</p>
                     </div>
@@ -57,6 +64,7 @@
                         <p>Thời gian nấu: {{$monan->thoigian}} phút</p>
                         <p>Độ khó: @if ($monan->dokho == 3) Bình thường @elseif ($monan->dokho == 4) Khó @else Dễ @endif</p>
                         <p>Nguyên liệu: {{$nguyenlieu->count()}}</p>
+
                       </div>
                     </div>
 
@@ -75,7 +83,7 @@
                     <tbody>
                       @foreach ($nguyenlieu as $v)
                         <tr>
-                          <td>{{$v->soluong}} {{$v->donvi}}</td>
+                          <td>{{$v->soluong}}</td>
                           <td>{{$v->ten->tenNguyenlieu}}</td>
                         </tr>
                       @endforeach
@@ -104,7 +112,7 @@
             <div class="">
             	<div class="">
                     <h2>Cách làm món {{$monan->tenMonan}}</h2>
-                    {{$monan->huongdan}}
+                    {!!$monan->huongdan!!}
 				      </div>
             </div>
         </div>
@@ -158,7 +166,7 @@
 
 	<div class="col-sm-2">
         <div class="row banner hidden-xs">
-            <img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
+            <img src="/images/banner1.png" alt="..." class="img-responsive">
         </div>
 	</div>
 
@@ -179,4 +187,15 @@ $(function() {
 	});
 });
 </script>
+<script>
+$(document).ready(function(){
+  $(document).on('click', '.book', function() {
+    $.ajax({url: "/bookmark/{{$monan->id}}", success: function(result){
+        $('.book span').html(result);
+    }});
+  });
+
+});
+</script>
+
 @endsection

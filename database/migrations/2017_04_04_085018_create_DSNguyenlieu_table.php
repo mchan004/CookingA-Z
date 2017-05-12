@@ -19,6 +19,7 @@ class CreateDSNguyenlieuTable extends Migration
           $table->string('group')->nullable();
           $table->boolean('publish')->default(0);
           $table->string('english')->nullable();
+          $table->integer('priority')->default(0);
       });
     }
 

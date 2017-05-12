@@ -23,29 +23,56 @@ Route::get('/timmonan', 'HomeController@outside');
 
 Route::post('/timmonan', 'HomeController@timmonan');
 
-Route::get('/livesearchNguyenlieu/{nhap}', 'HomeController@livesearchNguyenlieu');
+Route::get('/livesearchNguyenlieu/{nhap}', 'AjaxController@livesearchNguyenlieu');
 
+Route::get('/livesearchNguyenlieuDatalist/{nhap}', 'AjaxController@livesearchNguyenlieuDatalist');
 
+Route::get('/livesearchDungcuDatalist/{nhap}', 'AjaxController@livesearchDungcuDatalist');
+
+Auth::routes();
 
 /////////
 //Login//
 /////////
 
-Route::get('/Homelogin', function () {
-    return view('Login.home');
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/user', 'QuanlyController@home');
+
+  Route::group(['prefix' => 'user'], function () {
+
+        Route::get('QuanLyMonan', 'QuanlyMonanController@QuanlyMonan');
+
+        Route::group(['prefix' => 'QuanLyMonan'], function () {
+          Route::get('ThemMonan', 'QuanlyMonanController@showThemMonan');
+          Route::post('ThemMonan', 'QuanlyMonanController@ThemMonan');
+          Route::get('suaMonan/{id}', 'QuanlyMonanController@showsuaMonan');
+          Route::post('suaMonan', 'QuanlyMonanController@suamMonan');
+
+          Route::group(['middleware' => 'admin'], function () {
+            Route::get('publish/{id}', 'QuanlyMonanController@publish');
+            Route::get('unpublish/{id}', 'QuanlyMonanController@unpublish');
+            Route::get('xoa/{id}', 'QuanlyMonanController@XoaMonan');
+          });
+        });
+
+        Route::get('profile', function () {
+            // Uses Auth Middleware
+        });
+
+  });
+  ////////////
+  //Bookmark//
+  ////////////
+  Route::get('/bookmark/{id}', 'AjaxController@AddBookmark');
+  Route::get('/unbookmark/{id}', 'AjaxController@RemoveBookmark');
 });
 
-Route::get('/Login', function () {
-    return view('Login.login');
-});
 
-Route::get('/QuanLyBaiViet', function () {
-    return view('Login.tables');
-});
 
-Route::get('/GuiBaiMoi', function () {
-    return view('Login.form_wizards');
-});
+
+
+
+
 
 Route::get('/nguyenlieu', function () {
     $nguyenlieu=App\DSNguyenlieu::All();
@@ -53,7 +80,7 @@ Route::get('/nguyenlieu', function () {
     foreach ($nguyenlieuchitiet as $key) {
       return view('quanlynguyenlieu')->with('nguyenlieu',$nguyenlieu)->with('nguyenlieuchitiet',$key);
     }
-    });
+});
 
 Route::get('/nguyenlieu/{id}', function ($id) {
   $nguyenlieu=App\DSNguyenlieu::All();
@@ -61,4 +88,4 @@ Route::get('/nguyenlieu/{id}', function ($id) {
   foreach ($nguyenlieuchitiet as $key) {
     return view('quanlynguyenlieu')->with('nguyenlieu',$nguyenlieu)->with('nguyenlieuchitiet',$key);
   }
-    });
+});
