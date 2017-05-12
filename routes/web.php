@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
           Route::get('ThemMonan', 'QuanlyMonanController@showThemMonan');
           Route::post('ThemMonan', 'QuanlyMonanController@ThemMonan');
           Route::get('suaMonan/{id}', 'QuanlyMonanController@showsuaMonan');
-          Route::post('suaMonan', 'QuanlyMonanController@suamMonan');
+          Route::post('suaMonan', 'QuanlyMonanController@suaMonan');
 
           Route::group(['middleware' => 'admin'], function () {
             Route::get('publish/{id}', 'QuanlyMonanController@publish');
@@ -64,28 +64,6 @@ Route::group(['middleware' => 'auth'], function () {
   //Bookmark//
   ////////////
   Route::get('/bookmark/{id}', 'AjaxController@AddBookmark');
-  Route::get('/unbookmark/{id}', 'AjaxController@RemoveBookmark');
 });
 
-
-
-
-
-
-
-
-Route::get('/nguyenlieu', function () {
-    $nguyenlieu=App\DSNguyenlieu::All();
-    $nguyenlieuchitiet=App\DSNguyenlieu::All();
-    foreach ($nguyenlieuchitiet as $key) {
-      return view('quanlynguyenlieu')->with('nguyenlieu',$nguyenlieu)->with('nguyenlieuchitiet',$key);
-    }
-});
-
-Route::get('/nguyenlieu/{id}', function ($id) {
-  $nguyenlieu=App\DSNguyenlieu::All();
-  $nguyenlieuchitiet=App\DSNguyenlieu::find(1)->where('id',$id)->get();
-  foreach ($nguyenlieuchitiet as $key) {
-    return view('quanlynguyenlieu')->with('nguyenlieu',$nguyenlieu)->with('nguyenlieuchitiet',$key);
-  }
-});
+Route::post('/comment', 'HomeController@comment');

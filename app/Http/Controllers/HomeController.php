@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\DSMonan;
 use App\NguyenlieuMonan;
 use App\DSNguyenlieu;
 use App\BookmarksMonan;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -132,7 +135,56 @@ class HomeController extends Controller
     }
 
 
+    public function comment(Request $request)
+    {
+      if (Auth::guest()) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3|max:20',
+            'email' => 'required|min:5|email|max:30',
+            'comment' => 'required',
+            'star' => 'required',
+            'isSuccess' => 'required|numeric',
+          ]
+        );
 
+        if ($validator->fails()) {
+          return Redirect::back()->withErrors($validator);
+        }
+
+        $cm = new Comment;
+        $cm->name = $request->name;
+        $cm->email = $request->email;
+        $cm->comment = $request->comment;
+        $cm->rate = $request->star;
+        $cm->isSuccess = $request->isSuccess;
+        $cm->idMonan = $request->idMonan;
+        $cm->save();
+      }
+      else {
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required',
+            'star' => 'required',
+            'isSuccess' => 'required|numeric',
+          ]
+        );
+        if ($validator->fails()) {
+          return Redirect::back()->withErrors($validator);
+        }
+
+        $cm = new Comment;
+        $cm->createby = Auth::id();
+        $cm->comment = $request->comment;
+        $cm->rate = $request->star;
+        $cm->isSuccess = $request->isSuccess;
+        $cm->idMonan = $request->idMonan;
+        $cm->save();
+      }
+
+
+
+      return Redirect::back()->with('msg', 'Gởi bình luận thành công!');
+
+    }
 
 
 
