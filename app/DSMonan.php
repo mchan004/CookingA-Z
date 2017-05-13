@@ -24,4 +24,9 @@ class DSMonan extends Model
   {
       return $this->hasMany('App\Comment', 'idMonan', 'id');
   }
+
+  public function categorie1()
+   {
+       return $this->belongsTo('App\Categories','categorie','id');
+   }
 }
