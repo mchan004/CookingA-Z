@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\DSMonan;
 use App\NguyenlieuMonan;
 use App\DSNguyenlieu;
+use App\BookmarksMonan;
+use App\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -20,6 +25,9 @@ class HomeController extends Controller
       $newest = DSMonan::orderBy('created_at', 'desc')
                         ->take(12)
                         ->get();
+
+      //print_r($newest[0]->NguyenlieuMonan->pluck('tenNguyenlieu'));
+
       $thucuong = DSMonan::where('categorie', 3)
                         ->orderBy('created_at', 'desc')
                         ->take(8)
@@ -37,6 +45,17 @@ class HomeController extends Controller
     {
       $monan = DSMonan::find($id);
       $nguyenlieu = NguyenlieuMonan::where('idMonan', $id)->get();
+
+      $book = BookmarksMonan::where('idMonan', $id)->where('createby', Auth::id())->first();
+
+      if ($book != null) {
+        $book = true;
+      }
+      else {
+        $book = false;
+      }
+
+
       return view('inside', ['monan' => $monan, 'nguyenlieu' => $nguyenlieu]);
     }
 
@@ -116,34 +135,55 @@ class HomeController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    public function livesearchNguyenlieu($nhap)
+    public function comment(Request $request)
     {
+      if (Auth::guest()) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3|max:20',
+            'email' => 'required|min:5|email|max:30',
+            'comment' => 'required',
+            'star' => 'required',
+            'isSuccess' => 'required|numeric',
+          ]
+        );
 
-      //get the q parameter from URL
-      $q=$nhap;
-
-      //lookup all links from the xml file if length of q>0
-      if (strlen($q)>0) {
-        $hint="";
-
-        $NL = DSNguyenlieu::where('tenNguyenlieu', 'like', '%'.$q.'%')->take(20)->get();
-        foreach ($NL as $v) {
-          $hint .= "<option value=\"" . $v->id . "\">" . $v->tenNguyenlieu . "</option>";
+        if ($validator->fails()) {
+          return Redirect::back()->withErrors($validator);
         }
 
+        $cm = new Comment;
+        $cm->name = $request->name;
+        $cm->email = $request->email;
+        $cm->comment = $request->comment;
+        $cm->rate = $request->star;
+        $cm->isSuccess = $request->isSuccess;
+        $cm->idMonan = $request->idMonan;
+        $cm->save();
+      }
+      else {
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required',
+            'star' => 'required',
+            'isSuccess' => 'required|numeric',
+          ]
+        );
+        if ($validator->fails()) {
+          return Redirect::back()->withErrors($validator);
+        }
+
+        $cm = new Comment;
+        $cm->createby = Auth::id();
+        $cm->comment = $request->comment;
+        $cm->rate = $request->star;
+        $cm->isSuccess = $request->isSuccess;
+        $cm->idMonan = $request->idMonan;
+        $cm->save();
       }
 
-      echo $hint;
+
+
+      return Redirect::back()->with('msg', 'Gởi bình luận thành công!');
+
     }
 
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentTable extends Migration
+class CreateBookmarksMonAnTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateCommentTable extends Migration
      */
     public function up()
     {
-      Schema::create('Comment', function (Blueprint $table) {
+      Schema::create('BookmarksMonan', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('name')->nullable();
-          $table->string('email')->nullable();
-          $table->boolean('isSuccess')->default(0);
-          $table->string('comment');
-          $table->integer('rate');
-          $table->integer('like')->default(0);
+          $table->integer('createby')->unsigned();
           $table->integer('idMonan')->unsigned();
 
-          $table->timestamps();
-
-
+          $table->unique(['createby', 'idMonan']);
+          $table->foreign('createby')->references('id')->on('users');
           $table->foreign('idMonan')->references('id')->on('DSMonan');
       });
     }
@@ -37,6 +31,6 @@ class CreateCommentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Comment');
+      Schema::dropIfExists('BookmarksMonan');
     }
 }

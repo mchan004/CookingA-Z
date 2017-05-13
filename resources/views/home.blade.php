@@ -70,25 +70,28 @@
         <!--item-->
 
 @foreach ($newest as $v)
-      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
+
         <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
-          <div class="row" style="margin-right: -12px">
-            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}"
-              style="height: 250px;" width="100%" class="img-responsive">
+          <div class="row hinh-item">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" class="img-responsive">
           </div>
-          <div class="row" style="margin-left: -7px">
+          <div class="time">
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+          </div>
+          <div class="row NL">
             <h3>{{$v->tenMonan}}</h3>
             <small><em>
             @foreach ($v->NguyenlieuMonan->take(4) as $v1)
               {{$v1->tenNguyenlieu}},
             @endforeach
-             ...</em><br>
-            <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-            @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
+             ...</em></small>
           </div>
         </div>
-      </a>
+        @if (($loop->count % $loop->index) == 0)
+          <div class="clearfix"></div>
+        @endif
+
 @endforeach
 
       </div>
@@ -98,24 +101,21 @@
         <!--item-->
 @foreach ($trangmieng as $v)
       <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px">
-                <h3>{{$v->tenMonan}}</h3>
-                <small><em>
-                @foreach ($v->NguyenlieuMonan->take(4) as $v1)
-                  {{$v1->tenNguyenlieu}},
-                @endforeach
-                 ...</em><br>
-                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-                @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
-              </div>
-            </div>
+        <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+          <div class="row hinh-item">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
+          </div>
+          <div class="time">
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+          </div>
+          <div class="row NL">
+            <h3>{{$v->tenMonan}}</h3>
+            <small><em>
+            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+              {{$v1->tenNguyenlieu}},
+            @endforeach
+             ...</em></small>
           </div>
         </div>
       </a>
@@ -127,24 +127,21 @@
         <!--item-->
 @foreach ($thucuong as $v)
       <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
-        <div class="col-sm-3">
-          <div class="row" style="margin-bottom:3px;">
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-right: -12px"> <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" style="height: 250px;" width="100%" class="img-responsive"> </div>
-            </div>
-            <div class="col-sm-12 col-xs-6">
-              <div class="row" style="margin-left: -7px">
-                <h3>{{$v->tenMonan}}</h3>
-                <small><em>
-                @foreach ($v->NguyenlieuMonan->take(4) as $v1)
-                  {{$v1->tenNguyenlieu}},
-                @endforeach
-                 ...</em><br>
-                <img src="<?php echo URL::asset("images/flags/".$v->origin.".svg"); ?>" height="20">
-                @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-                @if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</small>
-              </div>
-            </div>
+        <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+          <div class="row hinh-item">
+            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
+          </div>
+          <div class="time">
+            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+          </div>
+          <div class="row NL">
+            <h3>{{$v->tenMonan}}</h3>
+            <small><em>
+            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+              {{$v1->tenNguyenlieu}},
+            @endforeach
+             ...</em></small>
           </div>
         </div>
       </a>
@@ -175,53 +172,93 @@
 
     </div>
     <div class="col-sm-2">
-      <div class="row">
+      <div class="row" >
         <div class="well" style="padding-top:0px; margin-left:5px">
         	<div class="row">
-            	<h3 style="margin-left:10px">Tài khoản</h3>
-                <form>
-                  <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email">
+            	<h4 style="margin-left:10px">Tài khoản</h4>
+              @if (Auth::guest())
+
+                <form role="form" method="POST" action="{{ route('login') }}">
+                  {{ csrf_field() }}
+                  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                   </div>
-                  <div class="form-group">
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+
+
+                  <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                   </div>
+
+
+                  <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Nhớ đăng nhập
                   <button type="submit" class="btn btn-default">Đăng nhập</button>
+
+
+
                 </form>
+              @else
+
+              <ul>
+                <li><a href="{{ url('user') }}">Trang cá nhân</a></li>
+                <li><a href="{{ url('user') }}">Món ăn yêu thích</a></li>
+                <li><a href="{{ url('user/monan') }}">Món ăn của bạn</a></li>
+                <li>
+                  <a title="Thoát" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                    Thoát
+                  </a>
+                </li>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+              </ul>
+              @endif
             </div>
         </div>
       </div>
       <div class="row" style="padding-left:5px">
-      <h3>Những món được đánh giá cao</h3>
-      	<table class="table table-hover table-responsive">
-            <tbody>
-              <tr>
-                <td><strong>1</strong></td>
-                <td>Gà hồng kong nướng muối</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Bánh flan trà xanh</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Phô mai que trà xanh</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Gà tiềm thuốc bắc</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Bánh bông lan trứng muối trà xanh</td>
-              </tr>
-            </tbody>
-        </table>
+        <h4>Những món được đánh giá cao</h4>
+        	<table class="table table-hover table-responsive">
+              <tbody>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Gà hồng kong nướng muối</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Bánh flan trà xanh</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Phô mai que trà xanh</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Gà tiềm thuốc bắc</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Bánh bông lan trứng muối trà xanh</td>
+                </tr>
+              </tbody>
+          </table>
       </div>
 
 
       <div class="row banner hidden-xs">
-      	<img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
+      	<img src="/images/banner.png"  alt="..." class="img-responsive">
       </div>
 
     </div>

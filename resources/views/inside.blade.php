@@ -36,8 +36,15 @@
             <div class="col-sm-7">
                     <div class="row">
                         <h1>{{$monan->tenMonan}}</h1>
-                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a>
+                        <span class="my-rating"></span> <a style="font-size:15px;color:#555759;text-decoration: none">{{$monan->comments->count()}} Reviews</a> |
+                        @if (Auth::guest())
+                          <a class="book" href="/login" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> <span>Lưu món ăn yêu thích</span></a>
+                        @else
+                          <a class="book" href="#" style="background-color: #ededed; padding: 5px"><img src="/images/icon/bookmark.svg" alt="bookmark" height="25"> <span>@if ($monan == false) Ghi nhớ món ăn @else Huỷ nhớ món ăn @endif </span></a>
+                        @endif
+
                     </div>
+
                     <div class="row" style="margin-top:10px">
                         <p class="text-justify">{{$monan->gioithieu}}</p>
                     </div>
@@ -57,6 +64,7 @@
                         <p>Thời gian nấu: {{$monan->thoigian}} phút</p>
                         <p>Độ khó: @if ($monan->dokho == 3) Bình thường @elseif ($monan->dokho == 4) Khó @else Dễ @endif</p>
                         <p>Nguyên liệu: {{$nguyenlieu->count()}}</p>
+
                       </div>
                     </div>
 
@@ -75,7 +83,7 @@
                     <tbody>
                       @foreach ($nguyenlieu as $v)
                         <tr>
-                          <td>{{$v->soluong}} {{$v->donvi}}</td>
+                          <td>{{$v->soluong}}</td>
                           <td>{{$v->ten->tenNguyenlieu}}</td>
                         </tr>
                       @endforeach
@@ -104,7 +112,7 @@
             <div class="">
             	<div class="">
                     <h2>Cách làm món {{$monan->tenMonan}}</h2>
-                    {{$monan->huongdan}}
+                    {!!$monan->huongdan!!}
 				      </div>
             </div>
         </div>
@@ -112,20 +120,47 @@
         <div class="col-sm-offset-2">
             <div class="row" id="cm">
             	<div class="well">
+                <form action="/comment/" method="post">
+                  {{ csrf_field() }}
                     <h3 style="margin-top:0">Comment</h3>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <input type="hidden" name="idMonan" value="{{$monan->id}}">
+                    @if (session('msg'))
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4>{{ session('msg') }}</h4>
+                      </div>
+                    @endif
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @foreach ($errors->all() as $error)
+                          {{ $error }}<br>
+                        @endforeach
+                      </div>
+                    @endif
+                    @if (Auth::guest())
+                      Tên của bạn:
+                      <input type="text" class="form-control" name="name" placeholder="Nhập tên của bạn">
+                      Email của bạn:
+                      <input type="text" class="form-control" name="email" placeholder="Nhập email của bạn">
+                      Bình luận
+                    @endif
+                    <textarea class="form-control" rows="3" style="margin-bottom: 5px" name="comment"></textarea>
+                    <input id="star" type="hidden" name="star" value="3">
+                    <b>Đánh giá món ăn này:</b> <span class="rating1"></span><br>
                     <b>Bạn đã nấu thành công chưa?</b>
                         <label class="radio-inline">
-                          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> Chưa
+                          <input type="radio" name="isSuccess" id="inlineRadio1" value="0" checked> Chưa
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Rồi
+                          <input type="radio" name="isSuccess" id="inlineRadio2" value="1"> Rồi
                         </label><br>
                     <div class="text-right">
                     	<button class="cancel-btn btn-std">Cancel</button>
-                        <button class="send-btn btn-std">Send</button>
+                        <button type="submit" class="send-btn btn-std">Send</button>
                     </div>
-                </div>
+                </form>
+              </div>
                 <hr>
                 <ul class="media-list">
 
@@ -138,7 +173,7 @@
                     </div>
                     <div class="media-body">
                       <div>
-                          <h4 class="media-heading">{{$v->name}} <small> | @if ($v->isSuccess == 1) <i><u>Đã nấu thành công</u> @endif khoảng 1 năm trước</i></small></h4>
+                          <h4 class="media-heading">@if ($v->name == null) {{$v->ten->name}} @else {{$v->name}} @endif<small> | @if ($v->isSuccess == 1) <i><u>Đã nấu thành công</u> @endif khoảng 1 năm trước</i></small></h4>
                           {{$v->comment}}
                       </div>
                       <div style="padding-left:15px">
@@ -158,7 +193,7 @@
 
 	<div class="col-sm-2">
         <div class="row banner hidden-xs">
-            <img src="http://www.bigc.vn/res/bnr_img/15.jpg" alt="..." class="img-responsive">
+            <img src="/images/banner1.png" alt="..." class="img-responsive">
         </div>
 	</div>
 
@@ -179,4 +214,28 @@ $(function() {
 	});
 });
 </script>
+<script>
+$(function() {
+  $(".rating1").starRating({
+	  initialRating: 3,
+	  strokeColor: '#894A00',
+	  strokeWidth: 10,
+	  starSize: 18,
+    callback: function(currentRating, $el){
+      $('#star').val(currentRating);
+    },
+	});
+});
+</script>
+<script>
+$(document).ready(function(){
+  $(document).on('click', '.book', function() {
+    $.ajax({url: "/bookmark/{{$monan->id}}", success: function(result){
+        $('.book span').html(result);
+    }});
+  });
+
+});
+</script>
+
 @endsection

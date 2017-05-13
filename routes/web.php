@@ -23,31 +23,55 @@ Route::get('/timmonan', 'HomeController@outside');
 
 Route::post('/timmonan', 'HomeController@timmonan');
 
-Route::get('/livesearchNguyenlieu/{nhap}', 'HomeController@livesearchNguyenlieu');
+Route::get('/livesearchNguyenlieu/{nhap}', 'AjaxController@livesearchNguyenlieu');
 
+Route::get('/livesearchNguyenlieuDatalist/{nhap}', 'AjaxController@livesearchNguyenlieuDatalist');
 
+Route::get('/livesearchDungcuDatalist/{nhap}', 'AjaxController@livesearchDungcuDatalist');
+
+Auth::routes();
 
 /////////
 //Login//
 /////////
 
-Route::get('/Homelogin', function () {
-    return view('Login.home');
-});
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/user', 'QuanlyController@home');
 
-Route::get('/Login', function () {
-    return view('Login.login');
-});
+  Route::group(['prefix' => 'user'], function () {
 
-Route::get('/QuanLyBaiViet', function () {
-    return view('Login.tables');
-});
+        Route::get('QuanLyMonan', 'QuanlyMonanController@QuanlyMonan');
 
+        Route::group(['prefix' => 'QuanLyMonan'], function () {
+          Route::get('ThemMonan', 'QuanlyMonanController@showThemMonan');
+          Route::post('ThemMonan', 'QuanlyMonanController@ThemMonan');
+          Route::get('suaMonan/{id}', 'QuanlyMonanController@showsuaMonan');
+          Route::post('suaMonan', 'QuanlyMonanController@suaMonan');
+
+          Route::group(['middleware' => 'admin'], function () {
+            Route::get('publish/{id}', 'QuanlyMonanController@publish');
+            Route::get('unpublish/{id}', 'QuanlyMonanController@unpublish');
+            Route::get('xoa/{id}', 'QuanlyMonanController@XoaMonan');
+          });
+        });
+
+        Route::get('profile', function () {
+            // Uses Auth Middleware
+        });
+
+<<<<<<< HEAD
 Route::get('test', function () {
   $danhmuc=App\DSMonan::find(1)->categorie1;
   //App\Categories::find(1)->monan;
   return $danhmuc;
     //return view('Login.form_wizards');
+=======
+  });
+  ////////////
+  //Bookmark//
+  ////////////
+  Route::get('/bookmark/{id}', 'AjaxController@AddBookmark');
+>>>>>>> master
 });
 use Illuminate\Http\Request;
 // Vũ làm
@@ -56,6 +80,7 @@ Route::get('quanly', function () {
 });
 Route::resource('quanly/monan', 'monanController');
 
+<<<<<<< HEAD
 Route::group(['prefix' => 'quanly'], function () {
   Route::get('danhmuc-index','danhmucController@index')->name('danhmuc-index');
   Route::post('danhmuc-store','danhmucController@store')->name('danhmuc-store');
@@ -165,3 +190,6 @@ Route::group(['prefix' => 'quanly'], function () {
       return redirect()->route('nlcc-index');
     })->name('dungcumonan-destroy');
 });
+=======
+Route::post('/comment', 'HomeController@comment');
+>>>>>>> master
