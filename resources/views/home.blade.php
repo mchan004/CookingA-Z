@@ -70,7 +70,7 @@
         <!--item-->
 
 @foreach ($newest as $v)
-      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
+
         <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
           <div class="row hinh-item">
             <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" class="img-responsive">
@@ -88,7 +88,10 @@
              ...</em></small>
           </div>
         </div>
-      </a>
+        @if (($loop->count % $loop->index) == 0)
+          <div class="clearfix"></div>
+        @endif
+
 @endforeach
 
       </div>

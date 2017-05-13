@@ -19,7 +19,13 @@ class QuanlyMonanController extends Controller
 
   public function QuanlyMonan()
   {
-    $DSMonan = DB::table('DSMonan')->orderBy('id')->get();
+    if (Auth::user()->Admin == False)
+    {
+      $DSMonan = DSMonan::where('createby', Auth::id())->get();
+    }
+    else {
+      $DSMonan = DSMonan::orderBy('id')->get();
+    }
 
     return view('Login.quanlymonan', ['DSMonan' => $DSMonan]);
   }
@@ -61,39 +67,42 @@ class QuanlyMonanController extends Controller
 
     $monan->save();
 
-    //Them DungcuMonan
-    foreach ($request->dungcu as $v) {
-      $id = DB::table('DSDungcu')->where('tenDungcu', $v)->value('id');
-      if ($id == null) {
-        $DSDungcu = new DSDungcu;
-        $DSDungcu->tenDungcu = $v;
-        $DSDungcu->save();
-        $id = $DSDungcu->id;
+
+    if (isset($request->dungcu)) {
+      //Them DungcuMonan
+      foreach ($request->dungcu as $v) {
+        $id = DB::table('DSDungcu')->where('tenDungcu', $v)->value('id');
+        if ($id == null) {
+          $DSDungcu = new DSDungcu;
+          $DSDungcu->tenDungcu = $v;
+          $DSDungcu->save();
+          $id = $DSDungcu->id;
+        }
+        $DungcuMonan = new DungcuMonan;
+        $DungcuMonan->idMonan = $monan->id;
+        $DungcuMonan->idDungcu = $id;
+        $DungcuMonan->save();
       }
-      $DungcuMonan = new DungcuMonan;
-      $DungcuMonan->idMonan = $monan->id;
-      $DungcuMonan->idDungcu = $id;
-      $DungcuMonan->save();
     }
 
+    if (isset($request->nguyenlieu)) {
+      //Them NguyenlieuMonan
+      for ($i=0; $i < count($request->nguyenlieu); $i++) {
 
-    //Them NguyenlieuMonan
-    for ($i=0; $i < count($request->nguyenlieu); $i++) {
-
-      $id = DB::table('DSNguyenlieu')->where('tenNguyenlieu', $request->nguyenlieu[$i])->value('id');
-      if ($id == null) {
-        $DSNguyenlieu = new DSNguyenlieu;
-        $DSNguyenlieu->tenNguyenlieu = $request->nguyenlieu[$i];
-        $DSNguyenlieu->save();
-        $id = $DSNguyenlieu->id;
+        $id = DB::table('DSNguyenlieu')->where('tenNguyenlieu', $request->nguyenlieu[$i])->value('id');
+        if ($id == null) {
+          $DSNguyenlieu = new DSNguyenlieu;
+          $DSNguyenlieu->tenNguyenlieu = $request->nguyenlieu[$i];
+          $DSNguyenlieu->save();
+          $id = $DSNguyenlieu->id;
+        }
+        $NguyenlieuMonan = new NguyenlieuMonan;
+        $NguyenlieuMonan->idMonan = $monan->id;
+        $NguyenlieuMonan->idNguyenlieu = $id;
+        $NguyenlieuMonan->soluong = $request->soluong[$i];
+        $NguyenlieuMonan->save();
       }
-      $NguyenlieuMonan = new NguyenlieuMonan;
-      $NguyenlieuMonan->idMonan = $monan->id;
-      $NguyenlieuMonan->idNguyenlieu = $id;
-      $NguyenlieuMonan->soluong = $request->soluong[$i];
-      $NguyenlieuMonan->save();
     }
-
 
     return redirect('/user/QuanLyMonan')->with('msg', 'Thêm món ăn thành công! Bạn chờ admin chỉnh lại bài viết nữa nhé!');
 
@@ -128,6 +137,7 @@ class QuanlyMonanController extends Controller
 
   public function showsuaMonan(Request $request, $id)
   {
+
     $monan = DSMonan::where('id', $id);
     if (Auth::user()->Admin == False)
     {
@@ -149,9 +159,8 @@ class QuanlyMonanController extends Controller
         'thoigian' => 'required|numeric',
         'dokho' => 'required',
         'gioithieu' => 'required|min:10',
-
-
-      ]
+      ],
+      ['thoigian.numeric' => 'Thời gian nấu chỉ nhập số']
     );
 
     if ($validator->fails()) {
@@ -179,7 +188,7 @@ class QuanlyMonanController extends Controller
     $monan->save();
     $monan->NLMA()->delete();
     $monan->DCMA()->delete();
-//Them DungcuMonan
+    //Them DungcuMonan
     foreach ($request->dungcu as $v) {
       $id = DB::table('DSDungcu')->where('tenDungcu', $v)->value('id');
       if ($id == null) {
@@ -195,7 +204,7 @@ class QuanlyMonanController extends Controller
     }
 
 
-//Them NguyenlieuMonan
+    //Them NguyenlieuMonan
     for ($i=0; $i < count($request->nguyenlieu); $i++) {
 
       $id = DB::table('DSNguyenlieu')->where('tenNguyenlieu', $request->nguyenlieu[$i])->value('id');

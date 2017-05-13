@@ -107,9 +107,8 @@
                                         <div class="row" id="DSNguyenlieu">
                                             <table id="tblNL">
                                                 <tr>
-                                                    <th width="20%">Số lượng</th>
-                                                    <th width="20%">Đơn vị</th>
-                                                    <th width="60%">Tên nguyên liệu</th>
+                                                    <th width="30%">Số lượng</th>
+                                                    <th width="70%">Tên nguyên liệu</th>
                                                     <th> X </th>
                                                 </tr>
                                                 <tr>
@@ -118,10 +117,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="text" placeholder="12" class="form-control" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="quả" class="form-control" readonly>
+                                                        <input type="text" placeholder="12 quả" class="form-control" readonly>
                                                     </td>
                                                     <td>
                                                         <input type="text" placeholder="Trứng gà" class="form-control" readonly>
@@ -130,10 +126,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <input type="text" placeholder="300" class="form-control" readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" placeholder="g" class="form-control" readonly>
+                                                        <input type="text" placeholder="300 g" class="form-control" readonly>
                                                     </td>
                                                     <td>
                                                         <input type="text" placeholder="Bột mỳ" class="form-control" readonly>
@@ -318,7 +311,7 @@ function showResultDC(str) {
 
 
 function them() {
-  var add = "<tr><td><input type=\"text\" name=\"soluong[]\" class=\"form-control\"></td>           <td><input type=\"text\" name=\"donvi[]\" class=\"form-control\"></td>        <td><input type=\"text\" name=\"nguyenlieu[]\" value=\"" + $('#themNL').val() + "\" class=\"form-control\"></td><td><a href=\"#\" class=\"bo\"><img src=\"/images/icon/dustbin.svg\" alt=\"remove\"></a></td></tr>";
+  var add = "<tr><td><input type=\"text\" name=\"soluong[]\" class=\"form-control\"></td>            <td><input type=\"text\" name=\"nguyenlieu[]\" value=\"" + $('#themNL').val() + "\" class=\"form-control\"></td><td><a href=\"#\" class=\"bo\"><img src=\"/images/icon/dustbin.svg\" alt=\"remove\"></a></td></tr>";
 
 
   $("#tblNL").append(add);

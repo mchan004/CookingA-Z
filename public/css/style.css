@@ -79,6 +79,7 @@ ul.share-buttons .sr-only {
 
 }
 
+
 .cooking-item a:hover img {
 	max-width: 100%;
 
@@ -167,4 +168,11 @@ ul.share-buttons .sr-only {
 h3 {
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }
