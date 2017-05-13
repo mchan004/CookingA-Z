@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -50,11 +50,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-        ],
-        [
-            'email.unique' => 'Email đã có người đăng ký!',
-            'password.min' => 'Mật khẩu ít nhất 6 ký tự!',
+            'password' => 'required|min:6|confirmed',
         ]);
     }
 

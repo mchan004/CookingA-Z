@@ -19,13 +19,13 @@ class CreateDSMonanTable extends Migration
           $table->integer('categorie')->unsigned();
           $table->integer('level')->default(1);
           $table->string('nhaTaitro')->nullable();
-          $table->mediumText('gioithieu');
+          $table->string('gioithieu', 1000);
           $table->string('hinhMinhhoa');
-          $table->char('origin', 2)->default('na');
+          $table->string('origin')->nullable();
           $table->integer('thoigian')->nullable();
           $table->integer('dokho')->nullable();
           $table->string('video')->nullable();
-          $table->longText('huongdan');
+          $table->string('huongdan', 10000);
           $table->string('nguon')->nullable();
           $table->string('hits')->default(0);
           $table->boolean('publish')->default(0);

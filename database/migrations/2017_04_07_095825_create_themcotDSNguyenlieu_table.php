@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCollComment extends Migration
+class CreateThemcotDSNguyenlieuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddCollComment extends Migration
      */
     public function up()
     {
-      Schema::table('Comment', function (Blueprint $table) {
-        $table->integer('createby')->unsigned()->nullable();;
-        $table->foreign('createby')->references('id')->on('users');
+      Schema::table('DSNguyenlieu', function (Blueprint $table) {
+        $table->integer('priority')->default(0);
       });
     }
 
