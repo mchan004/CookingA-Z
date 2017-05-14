@@ -96,37 +96,40 @@
       </div>
 
       <h2>Món tráng miệng, bánh</h2>
-      <div class="row cooking-item">
+      <div class="row cooking-item ci1">
         <!--item-->
 @foreach ($trangmieng as $v)
-      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
-        <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
-          <div class="row hinh-item">
-            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
-          </div>
-          <div class="time">
-            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
-          </div>
-          <div class="row NL">
-            <h3>{{$v->tenMonan}}</h3>
-            <small><em>
-            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
-              {{$v1->tenNguyenlieu}},
-            @endforeach
-             ...</em></small>
-          </div>
+
+      <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+        <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
+        <div class="row hinh-item">
+          <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
         </div>
-      </a>
+        <div class="time">
+          @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+          <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+        </div>
+        <div class="row NL">
+          <h3>{{$v->tenMonan}}</h3>
+          <small><em>
+          @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+            {{$v1->tenNguyenlieu}},
+          @endforeach
+           ...</em></small>
+        </div>
+        </a>
+      </div>
+
 @endforeach
 
       </div>
       <h2>Thức uống, cooktai</h2>
-      <div class="row cooking-item">
+      <div class="row cooking-item ci1">
         <!--item-->
 @foreach ($thucuong as $v)
-      <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
+
         <div class="col-sm-3 col-xs-6" style="margin-bottom: 5px">
+          <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
           <div class="row hinh-item">
             <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" style="height: 180px" class="img-responsive">
           </div>
@@ -142,8 +145,9 @@
             @endforeach
              ...</em></small>
           </div>
+          </a>
         </div>
-      </a>
+
 @endforeach
       </div>
       <div class="text-center" style="margin-top:10px">
