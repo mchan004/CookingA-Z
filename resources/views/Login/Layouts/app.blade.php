@@ -73,8 +73,7 @@
                   <li class="active"><a><i class="fa fa-edit"></i> Bài viết <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" style="display: block;">
                       <li><a href="/user/QuanLyMonan">Quản lý món ăn</a></li>
-                      <li><a href="/user/QuanLyNguyenlieu">Quản lý nguyên liệu</a></li>
-                      <li><a href="/user/QuanLyDungcu">Quản lý dụng cụ</a></li>
+                      <li><a href="{{route('nlcc-index')}}">Quản lý nguyên liệu và dụng cụ</a></li>
                       <li><a href="/user/QuanLyComment">Quản lý comment</a></li>
                       <li><a href="/user/QuanLyTips">Quản lý thủ thuật</a></li>
                       <li><a href="/user/QuanLyUser">Quản lý thành viên</a></li>
@@ -265,6 +264,13 @@
     <script src="{{ URL::asset('Admin/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
     <!-- Custom Theme Scripts -->
+    <script src="{{ URL::asset('Admin/build/js/custom.min.js') }}"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="{{ URL::asset('Admin/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script>
+    <script src="{{ URL::asset('Admin/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('Admin/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('Admin/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ URL::asset('Admin/vendors/nprogress/nprogress.js') }}"></script>
     <script src="{{ URL::asset('Admin/build/js/custom.min.js') }}"></script>
     @yield('addscript')
 

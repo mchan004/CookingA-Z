@@ -15,4 +15,8 @@ class DungcuMonan extends Model
         return $this->hasOne('App\DSDungcu', 'id', 'idDungcu');
     }
 
+    public function tenMonan()
+    {
+        return $this->hasOne('App\DSMonan', 'id', 'idMonan');
+    }
 }
