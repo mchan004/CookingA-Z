@@ -72,25 +72,24 @@
 @foreach ($newest as $v)
 
         <div class="col-sm-4 col-xs-6" style="margin-bottom: 5px">
-          <div class="row hinh-item">
-            <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" class="img-responsive">
-          </div>
-          <div class="time">
-            @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
-            <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
-          </div>
-          <div class="row NL">
-            <h3>{{$v->tenMonan}}</h3>
-            <small><em>
-            @foreach ($v->NguyenlieuMonan->take(4) as $v1)
-              {{$v1->tenNguyenlieu}},
-            @endforeach
-             ...</em></small>
-          </div>
+          <a href="/{{$v->id}}/{{str_slug($v->tenMonan, '-')}}">
+            <div class="row hinh-item">
+              <img src="{{$v->hinhMinhhoa}}" alt="{{$v->tenMonan}}" width="100%" class="img-responsive">
+            </div>
+            <div class="time">
+              @isset($v->video)<img src="{{ URL::asset('images/flags/videoplay.svg') }}" width="20">@endisset
+              <span>@if ($v->dokho == 3) Bình thường: {{$v->thoigian}}p @elseif ($v->dokho == 4) Khó: {{$v->thoigian}}p @else Dễ: {{$v->thoigian}}p @endif</span>
+            </div>
+            <div class="row NL">
+              <h3>{{$v->tenMonan}}</h3>
+              <small><em>
+              @foreach ($v->NguyenlieuMonan->take(4) as $v1)
+                {{$v1->tenNguyenlieu}},
+              @endforeach
+               ...</em></small>
+            </div>
+          </a>
         </div>
-        @if (($loop->count % $loop->index) == 0)
-          <div class="clearfix"></div>
-        @endif
 
 @endforeach
 
