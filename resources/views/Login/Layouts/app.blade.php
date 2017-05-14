@@ -29,7 +29,6 @@
     <!-- Custom Theme Style -->
     <link href="{{ URL::asset('Admin/build/css/custom.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/style.css') }}">
-
   </head>
 
   <body class="nav-md" >
@@ -77,6 +76,7 @@
                       <li><a href="/user/QuanLyComment">Quản lý comment</a></li>
                       <li><a href="/user/QuanLyTips">Quản lý thủ thuật</a></li>
                       <li><a href="/user/QuanLyUser">Quản lý thành viên</a></li>
+                      <li><a href="{{route('profile.index')}}">Profile</a></li>
                     </ul>
                   </li>
                 </ul>
