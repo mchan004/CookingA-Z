@@ -30,8 +30,9 @@ Route::get('/livesearchNguyenlieuDatalist/{nhap}', 'AjaxController@livesearchNgu
 Route::get('/livesearchDungcuDatalist/{nhap}', 'AjaxController@livesearchDungcuDatalist');
 
 Route::get('test',function () {
-  $test=App\NguyenlieuMonan::find(2)->tenMonan->tenMonan;
-  return $test;
+  $user=App\User::find(3)->profile->id;
+  $profile=App\profile::find(1)->user->name;
+  return $user;
 });
 Auth::routes();
 
@@ -43,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/user', 'QuanlyController@home');
 
   Route::group(['prefix' => 'user'], function () {
+        Route::resource('profile', 'profileController');
 
         Route::get('QuanLyMonan', 'QuanlyMonanController@QuanlyMonan');
 
@@ -84,7 +86,6 @@ Route::group(['middleware' => 'auth'], function () {
                                             'nguyenlieumonans'=>$nguyenlieumonans,
                                           ]);
         })->name('nlcc-index');
-
         Route::group(['prefix' => 'QuanLyNguyenLieuDungCu'], function () {
           //nguyen lieu
           Route::post('nguyenlieu-store',function (Request $request) {
